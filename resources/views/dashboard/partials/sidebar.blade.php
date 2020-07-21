@@ -19,6 +19,9 @@
             </ul>
         </li>
         <li class="@yield('menu-3')">
+            <a href="#" class="nav-link"><i class="far fa-user"></i><span>Data Warga</span></a>
+        </li>
+        <li class="@yield('menu-4')">
             <a href="#" class="nav-link"><i class="far fa-user"></i><span>Profil</span></a>
         </li>
     </ul>

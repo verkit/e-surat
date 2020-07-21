@@ -12,14 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
-
 Route::get('/', function () {
-    return view('dashboard.index');
+    return view('index');
 });
 
-Route::get('/masuk', function () {
-    return view('layouts.auth-master');
+Auth::routes();
+
+Route::group(['middleware' => ['web', 'auth', 'role:admin']], function () {
+    Route::get('/admin', function () {
+        return view('dashboard.index');
+    });
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

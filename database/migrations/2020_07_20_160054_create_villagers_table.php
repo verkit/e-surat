@@ -25,6 +25,8 @@ class CreateVillagersTable extends Migration
             $table->string('address');
             $table->string('religion');
             $table->string('last_education');
+            $table->string('ktp');
+            $table->string('kk');
             $table->timestamps();
 
             $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
