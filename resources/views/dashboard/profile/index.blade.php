@@ -1,4 +1,6 @@
 @extends('layouts.admin-master')
+@section('menu-5', 'active')
+
 @section('main-content')
 <div class="main-content">
     <section class="section">
