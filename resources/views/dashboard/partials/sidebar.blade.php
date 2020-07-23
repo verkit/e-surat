@@ -11,34 +11,37 @@
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                     class="far fa-file-alt"></i><span>Permohonan Masuk</span></a>
             <ul class="dropdown-menu">
-                <li class="@yield('menu-1-1')"><a class="nav-link" href="{{route('')}}">Terkirim</a></li>
-                <li class="@yield('menu-1-2')"><a class="nav-link" href="{{route('')}}">Selesai</a></li>
+                <li class="@yield('menu-1-1')"><a class="nav-link" href="{{route('permohonan-surat')}}">Terkirim</a>
+                </li>
+                <li class="@yield('menu-1-2')"><a class="nav-link"
+                        href="{{route('permohonan-surat.sukses')}}">Selesai</a></li>
             </ul>
         </li>
         <li class="dropdown @yield('menu-2')">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-align-left"></i>
                 <span>Form</span></a>
             <ul class="dropdown-menu">
-                <li class="@yield('menu-2-1')"><a class="nav-link" href="{{route('')}}">Daftar Form</a></li>
-                <li class="@yield('menu-2-2')"><a class="nav-link" href="{{route('')}}">Tambah Form</a></li>
+                <li class="@yield('menu-2-1')"><a class="nav-link" href="{{route('form')}}">Daftar Form</a></li>
+                <li class="@yield('menu-2-2')"><a class="nav-link" href="{{route('buat.form')}}">Tambah Form</a></li>
             </ul>
         </li>
         <li class="dropdown @yield('menu-3')">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="far fa-file"></i>
                 <span>Surat</span></a>
             <ul class="dropdown-menu">
-                <li class="@yield('menu-3-1')"><a class="nav-link" href="{{route('')}}">Daftar Surat</a></li>
-                <li class="@yield('menu-3-2')"><a class="nav-link" href="{{route('')}}">Tambah Surat</a></li>
+                <li class="@yield('menu-3-1')"><a class="nav-link" href="{{route('surat')}}">Daftar Surat</a></li>
+                <li class="@yield('menu-3-2')"><a class="nav-link" href="{{route('buat.surat')}}">Tambah Surat</a></li>
             </ul>
         </li>
         <li class="@yield('menu-4')">
-            <a href="#" class="nav-link"><i class="fas fa-users"></i><span>Data Akun</span></a>
+            <a href="{{route('akun')}}" class="nav-link"><i class="fas fa-users"></i><span>Data Akun</span></a>
         </li>
         <li class="@yield('menu-5')">
             <a href="{{route('profil')}}" class="nav-link"><i class="far fa-user"></i><span>Profil</span></a>
         </li>
         <li class="@yield('menu-6')">
-            <a href="{{route('pengurus-desa')}}" class="nav-link"><i class="far fa-address-card"></i><span>Pengurus Desa</span></a>
+            <a href="{{route('pengurus-desa')}}" class="nav-link"><i class="far fa-address-card"></i><span>Pengurus
+                    Desa</span></a>
         </li>
     </ul>
 

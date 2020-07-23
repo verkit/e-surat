@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('index');
 });
@@ -46,7 +47,8 @@ Route::group(['middleware' => ['web', 'auth', 'role:admin']], function () {
 
     //permohonan
     Route::get('/permohonan-surat', 'RequestLetterController@index')->name('permohonan-surat');
+    Route::get('/permohonan-surat/sukses', 'RequestLetterController@success')->name('permohonan-surat.sukses');
+    Route::get('/permohonan-surat/detail', 'RequestLetterController@show')->name('detail.permohonan-surat');
     Route::get('/b/permohonan-surat', 'RequestLetterController@create')->name('buat.permohonan-surat');
     Route::get('/e/permohonan-surat', 'RequestLetterController@edit')->name('edit.permohonan-surat');
-
 });

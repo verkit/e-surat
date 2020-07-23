@@ -16,6 +16,15 @@ class RequestLetterController extends Controller
         return view('dashboard.letter_requests.index');
     }
 
+    public function success()
+    {
+        return view('dashboard.letter_requests.success');
+    }
+
+    public function show()
+    {
+        return view('dashboard.letter_requests.detail');
+    }
     /**
      * Show the form for editing the specified resource.
      *
