@@ -24,7 +24,8 @@ Route::group(['middleware' => ['web', 'auth', 'role:admin']], function () {
     Route::get('/admin', 'HomeController@index')->name('home');
 
     //profil
-    Route::get('/profil', 'VillageController@index')->name('profil');
+    Route::get('/profil', 'HomeController@profil')->name('profil');
+    Route::put('/profil', 'HomeController@update_profile')->name('update.profil');
 
     //pengurus-desa
     Route::get('/pengurus-desa', 'VillageAdministratorController@index')->name('pengurus-desa');
@@ -33,7 +34,9 @@ Route::group(['middleware' => ['web', 'auth', 'role:admin']], function () {
 
     //akun
     Route::get('/akun', 'VillagerController@index')->name('akun');
-    Route::get('/e/akun', 'VillagerController@edit')->name('edit.akun');
+    Route::get('/akun/{id}', 'VillagerController@edit')->name('edit.akun');
+    Route::put('/akun/{id}', 'VillagerController@update')->name('update.akun');
+    Route::delete('/md/akun', 'VillagerController@destroy');
 
     //form
     Route::get('/form', 'FormController@index')->name('form');

@@ -41,4 +41,19 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Villager');
     }
+
+    public function gender()
+    {
+        return $this->hasOne('App\Gender');
+    }
+
+    public function marital_status()
+    {
+        return $this->hasOne('App\MaritalStatus');
+    }
+
+    protected $dates = [
+        'created_at',
+        'updated_at'
+    ];
 }
