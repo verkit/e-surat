@@ -16,16 +16,6 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components.css')}}">
-    <!-- Start GA -->
-    {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-94034622-3');
-    </script> --}}
-    <!-- /END GA -->
 </head>
 
 <body>
@@ -40,17 +30,8 @@
             </div>
 
             <!-- Main Content -->
-            <div class="main-content">
-                <section class="section">
-                    <div class="section-header">
-                        <h1>@yield('title-dashboard')</h1>
-                    </div>
+            @yield('main-content')
 
-                    <div class="section-body">
-                        @yield('content')
-                    </div>
-                </section>
-            </div>
             <footer class="main-footer">
                 <div class="footer-left">
                     Copyright &copy; 2020 <div class="bullet"></div> Develop by Verdy Bangkit (KKN UNEJ 2020) <div

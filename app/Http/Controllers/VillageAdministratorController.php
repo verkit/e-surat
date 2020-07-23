@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RequestLetterController extends Controller
+class VillageAdministratorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,18 +13,30 @@ class RequestLetterController extends Controller
      */
     public function index()
     {
-        return view('dashboard.letter_requests.index');
+        return view('dashboard.administrators.index');
     }
 
-    public function success()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        return view('dashboard.letter_requests.success');
+        return view('dashboard.administrators.create');
     }
 
-    public function show()
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        return view('dashboard.letter_requests.detail');
+        //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -33,7 +45,7 @@ class RequestLetterController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.letter_requests.edit');
+        return view('dashboard.administrators.edit');
     }
 
     /**
