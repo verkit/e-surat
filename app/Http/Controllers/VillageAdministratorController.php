@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LetterController extends Controller
+class VillageAdministratorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class LetterController extends Controller
      */
     public function index()
     {
-        return view('dashboard.letters.index');
+        return view('dashboard.administrators.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class LetterController extends Controller
      */
     public function create()
     {
-        return view('dashboard.letters.create');
+        return view('dashboard.administrators.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class LetterController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.letters.edit');
+        return view('dashboard.administrators.edit');
     }
 
     /**
