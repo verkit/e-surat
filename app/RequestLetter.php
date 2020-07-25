@@ -12,4 +12,12 @@ class RequestLetter extends Model
     {
         return $this->belongsToMany('App\RequestForm');
     }
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
+    public function letter(){
+        return $this->belongsTo('App\Letter');
+    }
 }

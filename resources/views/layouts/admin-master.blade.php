@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="base-url" content="{{ url('') }}">
+
     <title>@yield('title') - {{config('app.name')}}</title>
     <link rel="icon" href="{{url('storage/logo-magetan.png')}}">
     <!-- General CSS Files -->
@@ -63,7 +66,11 @@
     <!-- Template JS File -->
     <script src="{{asset('assets/js/scripts.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
-
+    <script>
+        const baseUrl = $('meta[name="base-url"]').attr('content');
+        const _token = $('meta[name="csrf-token"]').attr('content');
+        console.log(baseUrl);
+    </script>
     @stack('js-after')
 
 </body>

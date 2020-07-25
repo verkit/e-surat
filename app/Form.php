@@ -10,6 +10,6 @@ class Form extends Model
 
     public function letters()
     {
-        return $this->belongsToMany('App\Letter');
+        return $this->belongsToMany('App\Letter', 'letter_forms', 'letter_id', 'form_id');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\RequestLetter;
 use Illuminate\Http\Request;
 
 class RequestLetterController extends Controller
@@ -13,11 +14,59 @@ class RequestLetterController extends Controller
      */
     public function index()
     {
+        $request = RequestLetter::join('letters', 'request_letters.letter_id', '=', 'letters.id')
+                ->join('users', 'request_letters.user_id', '=', 'users.id')
+                ->join('villagers', 'users.id', '=', 'villagers.user_id')
+                ->select('request_letters.*', 'users.name', 'letters.letter_name', 'villagers.nik')
+                ->where('request_letters.is_done', '0')
+                ->get();
+
+        if (request()->ajax()) {
+            return datatables()->of($request)
+                ->addColumn('checkbox', function ($data) {
+                    return '<div class="custom-checkbox custom-control">
+                        <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input data-checkbox" id="delete' . $data->id . '"name="delete[]" value="' . $data->id . '" data-id="' . $data->id . '">
+                        <label for="delete' . $data->id . '" class="custom-control-label">&nbsp;</label>
+                    </div>';
+                })
+                ->addColumn('date', function ($data) {
+                    return $data->created_at->format('d M Y');
+                })
+                ->addColumn('action', function ($data) {
+                    return '<a name="detail" target="_blank" href="/permohonan-surat/' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
+                })
+                ->rawColumns(['checkbox', 'action', 'date'])
+                ->make(true);
+        }
         return view('dashboard.letter_requests.index');
     }
 
     public function success()
     {
+        $request = RequestLetter::join('letters', 'request_letters.letter_id', '=', 'letters.id')
+                ->join('users', 'request_letters.user_id', '=', 'users.id')
+                ->join('villagers', 'users.id', '=', 'villagers.user_id')
+                ->select('request_letters.*', 'users.name', 'letters.letter_name', 'villagers.nik')
+                ->where('request_letters.is_done', '0')
+                ->get();
+
+        if (request()->ajax()) {
+            return datatables()->of($request)
+                ->addColumn('checkbox', function ($data) {
+                    return '<div class="custom-checkbox custom-control">
+                        <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input data-checkbox" id="delete' . $data->id . '"name="delete[]" value="' . $data->id . '" data-id="' . $data->id . '">
+                        <label for="delete' . $data->id . '" class="custom-control-label">&nbsp;</label>
+                    </div>';
+                })
+                ->addColumn('date', function ($data) {
+                    return $data->created_at->format('d M Y');
+                })
+                ->addColumn('action', function ($data) {
+                    return '<a name="detail" target="_blank" href="/permohonan-surat/' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
+                })
+                ->rawColumns(['checkbox', 'action', 'date'])
+                ->make(true);
+        }
         return view('dashboard.letter_requests.success');
     }
 
@@ -33,7 +82,8 @@ class RequestLetterController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.letter_requests.edit');
+        $data = RequestLetter::find($id);
+        return view('dashboard.letter_requests.edit', compact('data'));
     }
 
     /**
@@ -54,8 +104,10 @@ class RequestLetterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $multipleId = $request->id;
+        $data  = RequestLetter::whereIn('id', $multipleId);
+        $data->delete();
     }
 }

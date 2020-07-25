@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\VillageAdministrator;
 use Illuminate\Http\Request;
 
 class VillageAdministratorController extends Controller
@@ -13,6 +14,20 @@ class VillageAdministratorController extends Controller
      */
     public function index()
     {
+        if (request()->ajax()) {
+            return datatables()->of(VillageAdministrator::all())
+                ->addColumn('checkbox', function ($data) {
+                    return '<div class="custom-checkbox custom-control">
+                        <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input data-checkbox" id="delete' . $data->id . '"name="delete[]" value="' . $data->id . '" data-id="' . $data->id . '">
+                        <label for="delete' . $data->id . '" class="custom-control-label">&nbsp;</label>
+                    </div>';
+                })
+                ->addColumn('action', function ($data) {
+                    return '<a name="detail" target="_blank" href="/perangkat-desa/' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
+                })
+                ->rawColumns(['checkbox', 'action'])
+                ->make(true);
+        }
         return view('dashboard.administrators.index');
     }
 
@@ -34,7 +49,19 @@ class VillageAdministratorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255|string',
+            'position' =>  'required|max:255|string',
+            'address' => 'required|max:255|string'
+        ]);
+
+        VillageAdministrator::create([
+            'name' => $request->name,
+            'position' => $request->position,
+            'address' => $request->address
+        ]);
+
+        return redirect()->route('perangkat-desa')->with('success', 'Berhasil menambahkan data');
     }
 
     /**
@@ -45,7 +72,8 @@ class VillageAdministratorController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.administrators.edit');
+        $data = VillageAdministrator::find($id);
+        return view('dashboard.administrators.edit', compact('data'));
     }
 
     /**
@@ -57,7 +85,19 @@ class VillageAdministratorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255|string',
+            'position' =>  'required|max:255|string',
+            'address' => 'required|max:255|string'
+        ]);
+
+        VillageAdministrator::where('id', $id)->update([
+            'name' => $request->name,
+            'position' => $request->position,
+            'address' => $request->address
+        ]);
+
+        return redirect()->route('perangkat-desa')->with('success', 'Berhasil merubah data');
     }
 
     /**
@@ -66,8 +106,10 @@ class VillageAdministratorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $multipleId = $request->id;
+        $data  = VillageAdministrator::whereIn('id', $multipleId);
+        $data->delete();
     }
 }
