@@ -2,12 +2,12 @@ $(document).ready(function () {
     $(document).on('click', '#delete', function(){
         let id = [];
         if (confirm("Apakah anda yakin ingin menghapus data ini?")) {
-            $(".user-checkbox:checked").each(function () {
+            $(".data-checkbox:checked").each(function () {
                 id.push($(this).val());
             });
             if (id.length > 0) {
                 $.ajax({
-                    url     : baseUrl + '/md/akun/',
+                    url     : baseUrl + '/md/perangkat-desa/',
                     method  : 'delete',
                     data    : {
                         _token  : _token,
@@ -20,16 +20,16 @@ $(document).ready(function () {
                     }
                 });
             } else {
-                alert('Harap pilih user');
+                alert('Harap pilih data');
             }
         }
     });
 
     $("#checkbox-all").click(function(){
         if (this.checked) {
-            $(".user-checkbox").prop('checked',true);
+            $(".data-checkbox").prop('checked',true);
         } else {
-            $(".user-checkbox").prop('checked',false);
+            $(".data-checkbox").prop('checked',false);
         }
     });
 
@@ -37,7 +37,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: {
-            url: '/akun',
+            url: '/perangkat-desa',
         },
         columns: [{
                 data: 'checkbox',
@@ -50,8 +50,8 @@ $(document).ready(function () {
                 name: 'name'
             },
             {
-                data: 'email',
-                name: 'email'
+                data: 'position',
+                name: 'position'
             },
             {
                 data: 'action',

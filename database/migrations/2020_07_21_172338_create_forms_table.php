@@ -17,6 +17,7 @@ class CreateFormsTable extends Migration
             $table->id();
             $table->string('form_name');
             $table->string('form_code');
+            $table->boolean('is_displayed');
             $table->timestamps();
         });
     }

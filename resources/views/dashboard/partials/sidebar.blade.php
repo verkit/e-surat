@@ -40,7 +40,7 @@
             <a href="{{route('profil')}}" class="nav-link"><i class="far fa-user"></i><span>Profil</span></a>
         </li>
         <li class="@yield('menu-6')">
-            <a href="{{route('pengurus-desa')}}" class="nav-link"><i class="far fa-address-card"></i><span>Perangkat
+            <a href="{{route('perangkat-desa')}}" class="nav-link"><i class="far fa-address-card"></i><span>Perangkat
                     Desa</span></a>
         </li>
     </ul>

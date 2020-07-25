@@ -19,7 +19,7 @@ class VillagerController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            return datatables()->of(User::where('role', '!=', 'admin'))
+            return datatables()->of(User::where('role', '!=', 'admin')->get())
                 ->addColumn('checkbox', function ($data) {
                     return '<div class="custom-checkbox custom-control">
                             <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input user-checkbox" id="delete' . $data->id . '"name="delete[]" value="' . $data->id . '" data-id="' . $data->id . '">
@@ -27,11 +27,12 @@ class VillagerController extends Controller
                         </div>';
                 })
                 ->addColumn('action', function ($data) {
-                    return '<a name="detail" href="/akun/' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
+                    return '<a name="detail" target="_blank" href="/akun/' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
                 })
                 ->rawColumns(['checkbox', 'action'])
                 ->make(true);
         }
+
         return view('dashboard.accounts.index');
     }
 
@@ -58,7 +59,6 @@ class VillagerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // \dd($request->all());
         $request->validate([
             'name' => 'max:255',
             'address' => 'max:255',
@@ -121,7 +121,18 @@ class VillagerController extends Controller
     public function destroy(Request $request)
     {
         $multipleId = $request->id;
-        $user  = User::whereIn('id', $multipleId);
-        $user->delete();
+        $users  = User::whereIn('id', $multipleId);
+        $villagers = Villager::whereIn('user_id', $multipleId)->get();
+
+        foreach ($villagers as $value) {
+            if ($value->kk) {
+                Storage::delete($value->kk);
+            }
+            if ($value->ktp) {
+                Storage::delete($value->ktp);
+            }
+        }
+
+        $users->delete();
     }
 }

@@ -54,7 +54,7 @@
                                 <table class="table table-striped" id="table">
                                     <thead>
                                         <tr>
-                                            <th class="text-center" width="60px">
+                                            <th class="text-center" style="max-width: 60px">
                                                 <div class="custom-checkbox custom-control">
                                                     <input type="checkbox" data-checkboxes="mygroup"
                                                         data-checkbox-role="dad" class="custom-control-input"
@@ -67,7 +67,7 @@
                                                     </button>
                                                 </div>
                                             </th>
-                                            <th width="250px">Nama</th>
+                                            <th style="max-width: 250px">Nama</th>
                                             <th>Email</th>
                                             <th>Aksi</th>
                                         </tr>

@@ -2,12 +2,12 @@ $(document).ready(function () {
     $(document).on('click', '#delete', function(){
         let id = [];
         if (confirm("Apakah anda yakin ingin menghapus data ini?")) {
-            $(".user-checkbox:checked").each(function () {
+            $(".data-checkbox:checked").each(function () {
                 id.push($(this).val());
             });
             if (id.length > 0) {
                 $.ajax({
-                    url     : baseUrl + '/md/akun/',
+                    url     : baseUrl + '/md/form/',
                     method  : 'delete',
                     data    : {
                         _token  : _token,
@@ -20,16 +20,16 @@ $(document).ready(function () {
                     }
                 });
             } else {
-                alert('Harap pilih user');
+                alert('Harap pilih data');
             }
         }
     });
 
     $("#checkbox-all").click(function(){
         if (this.checked) {
-            $(".user-checkbox").prop('checked',true);
+            $(".data-checkbox").prop('checked',true);
         } else {
-            $(".user-checkbox").prop('checked',false);
+            $(".data-checkbox").prop('checked',false);
         }
     });
 
@@ -37,7 +37,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: {
-            url: '/akun',
+            url: '/form',
         },
         columns: [{
                 data: 'checkbox',
@@ -46,18 +46,20 @@ $(document).ready(function () {
                 searchable: false,
             },
             {
-                data: 'name',
-                name: 'name'
+                data: 'form_name',
+                name: 'form_name'
             },
             {
-                data: 'email',
-                name: 'email'
+                data: 'form_code',
+                name: 'form_code'
+            },
+            {
+                data: 'is_displayed',
+                name: 'is_displayed'
             },
             {
                 data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false,
+                name: 'action'
             }
         ],
     });

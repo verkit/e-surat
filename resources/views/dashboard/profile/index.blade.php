@@ -27,7 +27,7 @@
                 <div class="col-12 col-md-12 col-lg-6">
                     <div class="card profile-widget">
                         <div class="profile-widget-header">
-                            <img alt="image" src="{{url(Auth::user()->photo)}}"
+                            <img alt="image" src="{{Storage::url(Auth::user()->photo)}}"
                                 class="rounded-circle profile-widget-picture">
                             <div class="profile-widget-items">
                                 <div class="profile-widget-item">

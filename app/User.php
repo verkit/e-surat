@@ -52,6 +52,10 @@ class User extends Authenticatable
         return $this->hasOne('App\MaritalStatus');
     }
 
+    public function letter_request(){
+        return $this->hasMany('App\RequestLetter');
+    }
+
     protected $dates = [
         'created_at',
         'updated_at'

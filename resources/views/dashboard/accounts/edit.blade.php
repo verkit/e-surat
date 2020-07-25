@@ -57,7 +57,7 @@
                             <div class="profile-widget-items">
                                 <div class="profile-widget-item">
                                     <div class="profile-widget-item-label">Jumlah Permohonan</div>
-                                    <div class="profile-widget-item-value">Profil</div>
+                                    <div class="profile-widget-item-value">{{$user->letter_request->count()}}</div>
                                 </div>
                                 <div class="profile-widget-item">
                                     <div class="profile-widget-item-label">Akun dibuat</div>
@@ -67,7 +67,7 @@
 
                         </div>
                         <div class="profile-widget-description">
-                            <form method="POST" action="{{route('update.akun', $user->id)}}" enctype="multipart/form-data">
+                            <form method="POST" action="{{route('update.akun', $user->id)}}" enctype="multipart/form-data" autocomplete="off">
                                 @method('put')
                                 @csrf
                                 <div class="row">
