@@ -17,7 +17,7 @@ class CreateRequestFormsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('form_id');
             $table->unsignedBigInteger('req_letter_id');
-            $table->string('text');
+            $table->string('text')->nullable();
             $table->timestamps();
 
             $table->foreign('form_id')->on('forms')->references('id')->onDelete('cascade');

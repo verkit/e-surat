@@ -30,32 +30,28 @@
                         <form autocomplete="off" method="POST" action="{{route('ubah.permohonan-surat', $data->id)}}">
                             @method('put')
                             @csrf
-                            {{-- <div class="card-header">
-                                <h4>Verifikasi surat</h4>
-                            </div> --}}
-                            <div class="card-body">
-                                <div class="card-body">
-                                    {{-- <div class="form-group">
-                                        <label>Nama Form</label>
-                                        <input type="text" class="form-control @error('form_name') is-invalid
-                                        @enderror" required name="form_name" value="{{$data->form_name}}">
-                                        @error('form_name')
-                                        <div class="invalid-feedback">
-                                            {{$message}}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Kode Form</label>
-                                        <input type="text" class="form-control @error('form_code') is-invalid
-                                        @enderror" required name="form_code" value="{{$data->form_code}}">
-                                        @error('form_code')
-                                        <div class="invalid-feedback">
-                                            {{$message}}
-                                        </div>
-                                        @enderror
-                                    </div> --}}
+                            <div class="card-header">
+                                <h4>Cetak surat</h4>
+                                <div class="ml-auto">
+                                    <a href="{{route('cetak.permohonan-surat', $data->id)}}" class="btn btn-primary"><i
+                                            class="fas fa-print"></i> Cetak</a>
                                 </div>
+                            </div>
+                            <div class="card-body">
+                                @foreach ($data->letter->forms as $key => $item)
+                                <div class="form-group">
+                                    <label>{{$item->form_name}}</label>
+                                    <input type="text" class="form-control @error('form_name[]') is-invalid
+                                        @enderror" required name="form_name[]" value="{{$form[$key]->text}}">
+                                    <input type="text" class="form-control" name="form_id[]"
+                                        value="{{$form[$key]->id}}" hidden readonly>
+                                    @error('form_name[]')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                                @endforeach
                             </div>
                             <div class="card-footer text-right">
                                 <button class="btn btn-primary">Simpan</button>

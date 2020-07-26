@@ -16,6 +16,7 @@
         "laravel/passport": "^9.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
+        "novay/laravel-word-template": "^1.1",
         "yajra/laravel-datatables-oracle": "^9.10"
     },
     "require-dev": {
