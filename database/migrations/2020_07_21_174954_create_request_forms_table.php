@@ -16,10 +16,12 @@ class CreateRequestFormsTable extends Migration
         Schema::create('request_forms', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('form_id');
-            $table->string('text');
+            $table->unsignedBigInteger('req_letter_id');
+            $table->string('text')->nullable();
             $table->timestamps();
 
             $table->foreign('form_id')->on('forms')->references('id')->onDelete('cascade');
+            $table->foreign('req_letter_id')->on('request_letters')->references('id')->onDelete('cascade');
         });
     }
 

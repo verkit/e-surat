@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/test', 'RequestLetterController@testview');
+Route::get('/testprint', 'RequestLetterController@print');
+Route::post('/test', 'RequestLetterController@testpost');
 
 Auth::routes();
 
@@ -62,6 +66,7 @@ Route::group(['middleware' => ['web', 'auth', 'role:admin']], function () {
     Route::get('/permohonan-surat/sukses', 'RequestLetterController@success')->name('permohonan-surat.sukses');
     Route::get('/b/permohonan-surat', 'RequestLetterController@create')->name('buat.permohonan-surat');
     Route::get('/permohonan-surat/{id}', 'RequestLetterController@edit')->name('edit.permohonan-surat');
+    Route::get('/permohonan-surat/{id}/cetak', 'RequestLetterController@print')->name('cetak.permohonan-surat');
     Route::put('/permohonan-surat/{id}', 'RequestLetterController@update')->name('ubah.permohonan-surat');
     Route::delete('/md/permohonan-surat', 'RequestLetterController@destroy');
 });

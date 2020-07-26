@@ -12,4 +12,8 @@ class Form extends Model
     {
         return $this->belongsToMany('App\Letter', 'letter_forms', 'letter_id', 'form_id');
     }
+
+    public function req_form(){
+        return $this->hasMany('App\RequestForm');
+    }
 }

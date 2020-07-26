@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Letter;
+use App\RequestForm;
 use App\RequestLetter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Novay\WordTemplate\WordTemplate;
+use Novay\WordTemplate\WordTemplateServiceProvider;
 
 class RequestLetterController extends Controller
 {
@@ -15,11 +20,12 @@ class RequestLetterController extends Controller
     public function index()
     {
         $request = RequestLetter::join('letters', 'request_letters.letter_id', '=', 'letters.id')
-                ->join('users', 'request_letters.user_id', '=', 'users.id')
-                ->join('villagers', 'users.id', '=', 'villagers.user_id')
-                ->select('request_letters.*', 'users.name', 'letters.letter_name', 'villagers.nik')
-                ->where('request_letters.is_done', '0')
-                ->get();
+            ->join('users', 'request_letters.user_id', '=', 'users.id')
+            ->join('villagers', 'users.id', '=', 'villagers.user_id')
+            ->select('request_letters.*', 'users.name', 'letters.letter_name', 'villagers.nik')
+            ->where('request_letters.is_done', '0')
+            ->orderBy('request_letters.created_at', 'desc')
+            ->get();
 
         if (request()->ajax()) {
             return datatables()->of($request)
@@ -30,7 +36,7 @@ class RequestLetterController extends Controller
                     </div>';
                 })
                 ->addColumn('date', function ($data) {
-                    return $data->created_at->format('d M Y');
+                    return $data->created_at->format('Y M d, H:i');
                 })
                 ->addColumn('action', function ($data) {
                     return '<a name="detail" target="_blank" href="/permohonan-surat/' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
@@ -44,11 +50,12 @@ class RequestLetterController extends Controller
     public function success()
     {
         $request = RequestLetter::join('letters', 'request_letters.letter_id', '=', 'letters.id')
-                ->join('users', 'request_letters.user_id', '=', 'users.id')
-                ->join('villagers', 'users.id', '=', 'villagers.user_id')
-                ->select('request_letters.*', 'users.name', 'letters.letter_name', 'villagers.nik')
-                ->where('request_letters.is_done', '0')
-                ->get();
+            ->join('users', 'request_letters.user_id', '=', 'users.id')
+            ->join('villagers', 'users.id', '=', 'villagers.user_id')
+            ->select('request_letters.*', 'users.name', 'letters.letter_name', 'villagers.nik')
+            ->where('request_letters.is_done', '1')
+            ->orderBy('request_letters.created_at', 'desc')
+            ->get();
 
         if (request()->ajax()) {
             return datatables()->of($request)
@@ -83,7 +90,27 @@ class RequestLetterController extends Controller
     public function edit($id)
     {
         $data = RequestLetter::find($id);
-        return view('dashboard.letter_requests.edit', compact('data'));
+        $form = RequestForm::where('req_letter_id', $data->id)->get();
+        return view('dashboard.letter_requests.edit', compact('data', 'form'));
+    }
+
+    public function print($id)
+    {
+        $data = RequestLetter::find($id);
+        $form_letters = RequestForm::where('req_letter_id', $data->id)->get();
+
+        $file_format = public_path(Storage::url($data->letter->letter_format));
+        $file_name =  $data->letter->letter_name . '-' . $data->user->name . '.doc';
+        $forms = [];
+        foreach ($form_letters as $key => $value) {
+            $forms[$value->form->form_code] = $value->text;
+        }
+
+        $data->is_done = 1;
+        $data->save();
+
+        $wordtemplate = new WordTemplate;
+        return $wordtemplate->export($file_format, $forms, $file_name);
     }
 
     /**
@@ -95,7 +122,13 @@ class RequestLetterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        foreach ($request->form_id as $key => $value) {
+            RequestForm::where('id', $value)->update([
+                'text' => $request->form_name[$key]
+            ]);
+        }
+
+        return back()->with('success', 'Berhasil memperbarui isi surat');
     }
 
     /**
@@ -109,5 +142,28 @@ class RequestLetterController extends Controller
         $multipleId = $request->id;
         $data  = RequestLetter::whereIn('id', $multipleId);
         $data->delete();
+    }
+
+    public function testview()
+    {
+        $surat = Letter::find(1);
+        return \view('test', \compact('surat'));
+    }
+
+    public function testpost(Request $request)
+    {
+        $surat = RequestLetter::create([
+            'letter_id' => $request->surat_id,
+            'user_id' => 2,
+            'is_done' => 0
+        ]);
+
+        foreach ($request->form_id as $key => $value) {
+            RequestForm::create([
+                'form_id' => $value,
+                'req_letter_id' => $surat->id,
+                'text' => $request->form_name[$key]
+            ]);
+        }
     }
 }

@@ -12,4 +12,8 @@ class RequestForm extends Model
     {
         return $this->belongsToMany('App\RequestLetter');
     }
+
+    public function form(){
+        return $this->belongsTo('App\Form');
+    }
 }
