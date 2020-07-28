@@ -13,7 +13,7 @@ class MaritalStatusesSeeder extends Seeder
     public function run()
     {
         $marital_statuses = [
-            'Belum Menikah',
+            'Belum Kawin',
             'Kawin',
             'Cerai Hidup',
             'Cerai Mati'

@@ -64,9 +64,21 @@ Route::group(['middleware' => ['web', 'auth', 'role:admin']], function () {
     //permohonan
     Route::get('/permohonan-surat', 'RequestLetterController@index')->name('permohonan-surat');
     Route::get('/permohonan-surat/sukses', 'RequestLetterController@success')->name('permohonan-surat.sukses');
-    Route::get('/b/permohonan-surat', 'RequestLetterController@create')->name('buat.permohonan-surat');
     Route::get('/permohonan-surat/{id}', 'RequestLetterController@edit')->name('edit.permohonan-surat');
     Route::get('/permohonan-surat/{id}/cetak', 'RequestLetterController@print')->name('cetak.permohonan-surat');
     Route::put('/permohonan-surat/{id}', 'RequestLetterController@update')->name('ubah.permohonan-surat');
     Route::delete('/md/permohonan-surat', 'RequestLetterController@destroy');
+
+    //kk
+    Route::get('/blangko-kk', 'FamilyCardController@index')->name('kk');
+    Route::get('/blangko-kk-pisah', 'FamilyCardController@index_separate')->name('kk.pisah');
+    Route::get('/blangko-kk/{id}', 'FamilyCardController@edit')->name('edit.kk');
+    Route::get('/blangko-kk/{id}/cetak', 'FamilyCardController@print')->name('cetak.kk');
+    Route::put('/blangko-kk/{id}', 'FamilyCardController@update')->name('ubah.kk');
+    Route::delete('/md/blangko-kk', 'FamilyCardController@destroy');
+
+    //anggota kk
+    Route::get('/blangko-kk-anggota/{id}', 'MemberFamilyController@edit')->name('edit.anggota.kk');
+    Route::put('/blangko-kk-anggota/{id}', 'MemberFamilyController@update')->name('ubah.anggota.kk');
+    Route::delete('/blangko-kk-anggota/{id}', 'MemberFamilyController@destroy')->name('hapus.anggota.kk');
 });

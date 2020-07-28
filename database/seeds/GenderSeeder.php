@@ -13,8 +13,8 @@ class GenderSeeder extends Seeder
     public function run()
     {
         $genders = [
-            'laki-laki',
-            'perempuan',
+            'Laki-Laki',
+            'Perempuan',
         ];
 
         foreach ($genders as $value) {
