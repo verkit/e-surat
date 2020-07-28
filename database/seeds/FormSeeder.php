@@ -63,6 +63,8 @@ class FormSeeder extends Seeder
             'jabatan',
             'nama pejabat',
             'alamat pejabat',
+            'acara',
+            'tanggal pelaksanaan'
         ];
 
         $form_codes = [
@@ -116,6 +118,8 @@ class FormSeeder extends Seeder
             ['[JABATAN]', 0],
             ['[NAMA_PEJABAT]', 0],
             ['[ALAMAT_PEJABAT]', 0],
+            ['[ACARA]', 0],
+            ['[TANGGAL_PELAKSANAAN]', 0]
         ];
 
         foreach ($forms as $key => $value) {
