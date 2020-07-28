@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             VillageAdministratorSeeder::class,
             FormSeeder::class,
+            BloodTypeSeeder::class,
+            CitizenshipSeeder::class,
+            ReligionSeeder::class,
             TestSeeder::class,
         ]);
     }

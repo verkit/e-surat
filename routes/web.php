@@ -29,7 +29,7 @@ Route::group(['middleware' => ['web', 'auth', 'role:admin']], function () {
 
     //profil
     Route::get('/profil', 'HomeController@profil')->name('profil');
-    Route::put('/profil', 'HomeController@update_profile')->name('update.profil');
+    Route::put('/profil', 'HomeController@update_profile')->name('ubah.profil');
 
     //perangkat-desa
     Route::get('/perangkat-desa', 'VillageAdministratorController@index')->name('perangkat-desa');
@@ -42,7 +42,7 @@ Route::group(['middleware' => ['web', 'auth', 'role:admin']], function () {
     //akun
     Route::get('/akun', 'VillagerController@index')->name('akun');
     Route::get('/akun/{id}', 'VillagerController@edit')->name('edit.akun');
-    Route::put('/akun/{id}', 'VillagerController@update')->name('update.akun');
+    Route::put('/akun/{id}', 'VillagerController@update')->name('ubah.akun');
     Route::delete('/md/akun', 'VillagerController@destroy');
 
     //form
@@ -81,4 +81,12 @@ Route::group(['middleware' => ['web', 'auth', 'role:admin']], function () {
     Route::get('/blangko-kk-anggota/{id}', 'MemberFamilyController@edit')->name('edit.anggota.kk');
     Route::put('/blangko-kk-anggota/{id}', 'MemberFamilyController@update')->name('ubah.anggota.kk');
     Route::delete('/blangko-kk-anggota/{id}', 'MemberFamilyController@destroy')->name('hapus.anggota.kk');
+
+    //ktp
+    Route::get('/blangko-ktp', 'KTPController@index')->name('ktp');
+    Route::get('/blangko-ktp/{id}', 'KTPController@edit')->name('edit.ktp');
+    Route::get('/blangko-ktp/{id}/cetak', 'KTPController@print')->name('cetak.ktp');
+    Route::post('/reformat-blangko-ktp/', 'KTPController@reformat')->name('ubah.ktp.format');
+    Route::put('/blangko-ktp/{id}', 'KTPController@update')->name('ubah.ktp');
+    Route::delete('/md/blangko-ktp', 'KTPController@destroy');
 });

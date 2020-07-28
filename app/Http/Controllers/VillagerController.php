@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Gender;
 use App\MaritalStatus;
+use App\Religion;
 use App\User;
 use App\Villager;
 use Illuminate\Http\Request;
@@ -46,8 +47,9 @@ class VillagerController extends Controller
     {
         $genders = Gender::all();
         $marital_statuses = MaritalStatus::all();
+        $religions = Religion::all();
         $user = User::find($id);
-        return view('dashboard.accounts.edit', compact('user', 'genders', 'marital_statuses'));
+        return view('dashboard.accounts.edit', compact('user', 'genders', 'marital_statuses', 'religions'));
     }
 
     /**

@@ -47,6 +47,16 @@
                 </div>
             </div>
             @endif
+            @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span>×</span>
+                    </button>
+                    Terjadi kesalahan saat menyimpan data
+                </div>
+            </div>
+            @endif
 
             <div class="row mt-sm-4">
                 <div class="col-12 col-md-12 col-lg-12">
@@ -62,7 +72,8 @@
                             </div>
                         </div>
                         <div class="profile-widget-description">
-                            <form method="POST" action="{{route('update.akun', $user->id)}}" enctype="multipart/form-data" autocomplete="off">
+                            <form method="POST" action="{{route('ubah.akun', $user->id)}}"
+                                enctype="multipart/form-data" autocomplete="off">
                                 @method('put')
                                 @csrf
                                 <div class="row">
@@ -136,8 +147,7 @@
                                         <select class="form-control @error('gender') is-invalid @enderror" name="gender"
                                             required>
                                             @foreach ($genders as $item)
-                                            <option value="{{$item->id}}"
-                                                @if ($user->villager->gender_id == $item->id)
+                                            <option value="{{$item->id}}" @if ($user->villager->gender_id == $item->id)
                                                 selected
                                                 @endif>
                                                 {{$item->name}}</option>
@@ -154,8 +164,8 @@
                                         <select class="form-control @error('marital_status') is-invalid @enderror"
                                             name="marital_status" required>
                                             @foreach ($marital_statuses as $item)
-                                            <option value="{{$item->id}}"
-                                                @if ($user->villager->marital_status_id == $item->id)
+                                            <option value="{{$item->id}}" @if ($user->villager->marital_status_id ==
+                                                $item->id)
                                                 selected
                                                 @endif>
                                                 {{$item->name}}</option>
@@ -202,8 +212,15 @@
                                     </div>
                                     <div class="form-group col-md-3 col-12">
                                         <label>Agama</label>
-                                        <input type="text" class="form-control @error('religion') is-invalid
-                                        @enderror" name="religion" value="{{$user->villager->religion}}" required>
+                                        <select name="religion" id="religion" class="form-control @error('religion') is-invalid
+                                        @enderror">
+                                            @foreach ($religions as $item)
+                                            <option value="{{$item->id}}" @if ($user->villager->religion_id ==
+                                                $item->id)
+                                                selected
+                                                @endif>{{$item->name}}</option>
+                                            @endforeach
+                                        </select>
                                         @error('religion')
                                         <div class="invalid-feedback">
                                             {{$message}}

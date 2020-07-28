@@ -11,10 +11,10 @@
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                     class="far fa-file-alt"></i><span>Permohonan Masuk</span></a>
             <ul class="dropdown-menu">
-                <li class="@yield('menu-1-1')"><a class="nav-link" href="{{route('permohonan-surat')}}">Terkirim</a>
+                <li class="@yield('menu-1-1')"><a class="nav-link" href="{{route('permohonan-surat')}}">Belum Cetak</a>
                 </li>
                 <li class="@yield('menu-1-2')"><a class="nav-link"
-                        href="{{route('permohonan-surat.sukses')}}">Selesai</a></li>
+                        href="{{route('permohonan-surat.sukses')}}">Sudah Cetak</a></li>
             </ul>
         </li>
         <li class="dropdown @yield('menu-7')">
@@ -26,6 +26,9 @@
                 <li class="@yield('menu-7-2')"><a class="nav-link" href="{{route('kk.pisah')}}">Pisah</a>
                 </li>
             </ul>
+        </li>
+        <li class="@yield('menu-8')">
+            <a href="{{route('ktp')}}" class="nav-link"><i class="fas fa-file-alt"></i><span>Blangko KTP</span></a>
         </li>
         <li class="dropdown @yield('menu-2')">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-align-left"></i>

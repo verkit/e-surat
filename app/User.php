@@ -44,12 +44,16 @@ class User extends Authenticatable
 
     public function gender()
     {
-        return $this->hasOne('App\Gender');
+        return $this->belongsTo('App\Gender');
     }
 
     public function marital_status()
     {
-        return $this->hasOne('App\MaritalStatus');
+        return $this->belongsTo('App\MaritalStatus');
+    }
+
+    public function religion(){
+        return $this->belongsTo('App\Religion');
     }
 
     public function letter_request(){

@@ -18,6 +18,16 @@
                 </div>
             </div>
             @endif
+            @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span>×</span>
+                    </button>
+                    Terjadi kesalahan saat menyimpan data
+                </div>
+            </div>
+            @endif
 
             <h2 class="section-title">Hi, {{Auth::user()->name}}</h2>
             <p class="section-lead">
@@ -36,7 +46,7 @@
                             </div>
                         </div>
                         <div class="profile-widget-description">
-                            <form method="POST" action="{{route('update.profil')}}">
+                            <form method="POST" action="{{route('ubah.profil')}}">
                                 @method('put')
                                 @csrf
                                 <div class="form-group">

@@ -7,7 +7,7 @@ $(document).ready(function () {
             });
             if (id.length > 0) {
                 $.ajax({
-                    url: baseUrl + '/md/permohonan-surat/',
+                    url: baseUrl + '/md/blangko-ktp',
                     method: 'delete',
                     data: {
                         _token: _token,
@@ -37,7 +37,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: {
-            url: '/permohonan-surat',
+            url: '/blangko-ktp',
         },
         columns: [{
                 data: 'checkbox',
@@ -46,51 +46,8 @@ $(document).ready(function () {
                 searchable: false,
             },
             {
-                data: 'nik',
-                name: 'nik'
-            },
-            {
-                data: 'account',
-                name: 'account'
-            },
-            {
-                data: 'letter_name',
-                name: 'letter_name'
-            },
-            {
-                data: 'date',
-                name: 'date'
-            },
-            {
-                data: 'action',
-                name: 'action'
-            }
-        ],
-    });
-
-    $('#success_table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: {
-            url: '/permohonan-surat/sukses',
-        },
-        columns: [{
-                data: 'checkbox',
-                name: 'checkbox',
-                orderable: false,
-                searchable: false,
-            },
-            {
-                data: 'nik',
-                name: 'nik'
-            },
-            {
-                data: 'name',
-                name: 'name'
-            },
-            {
-                data: 'letter_name',
-                name: 'letter_name'
+                data: 'fullname',
+                name: 'fullname'
             },
             {
                 data: 'date',
