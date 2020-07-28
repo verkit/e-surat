@@ -14,13 +14,13 @@ class VillageAdministratorSeeder extends Seeder
     {
         VillageAdministrator::create([
             'name' => 'Dr.M.NUR HIDAYAT CN,S.T.,MMT',
-            'position' => 'Kepala Desa Simbatan',
+            'position' => 'Kepala Desa',
             'address' => 'Desa Simbatan Kec, Nguntoronadi Kab, Magetan'
         ]);
 
         VillageAdministrator::create([
             'name' => 'FERY GRAHANDA ANUGRA,S.Kom',
-            'position' => 'Sekretaris Desa Simbatan',
+            'position' => 'Sekretaris Desa',
             'address' => 'Desa Simbatan Kec, Nguntoronadi Kab, Magetan'
         ]);
     }

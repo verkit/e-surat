@@ -31,7 +31,7 @@
                             @method('put')
                             @csrf
                             <div class="card-header">
-                                <h4>Cetak surat</h4>
+                                <h4>{{$data->letter->letter_name}}</h4>
                                 <div class="ml-auto">
                                     <a href="{{route('cetak.permohonan-surat', $data->id)}}" class="btn btn-primary"><i
                                             class="fas fa-print"></i> Cetak</a>

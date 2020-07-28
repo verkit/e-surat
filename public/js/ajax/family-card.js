@@ -7,7 +7,7 @@ $(document).ready(function () {
             });
             if (id.length > 0) {
                 $.ajax({
-                    url     : baseUrl + '/md/surat/',
+                    url     : baseUrl + '/md/blangko-kk',
                     method  : 'delete',
                     data    : {
                         _token  : _token,
@@ -37,7 +37,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: {
-            url: '/surat',
+            url: '/blangko-kk',
         },
         columns: [{
                 data: 'checkbox',
@@ -46,12 +46,66 @@ $(document).ready(function () {
                 searchable: false,
             },
             {
-                data: 'letter_name',
-                name: 'letter_name'
+                data: 'name',
+                name: 'name'
             },
             {
-                data: 'is_displayed',
-                name: 'is_displayed'
+                data: 'date',
+                name: 'date'
+            },
+            {
+                data: 'action',
+                name: 'action'
+            }
+        ],
+    });
+
+    $('#table_new').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: '/blangko-kk-baru',
+        },
+        columns: [{
+                data: 'checkbox',
+                name: 'checkbox',
+                orderable: false,
+                searchable: false,
+            },
+            {
+                data: 'name',
+                name: 'name'
+            },
+            {
+                data: 'date',
+                name: 'date'
+            },
+            {
+                data: 'action',
+                name: 'action'
+            }
+        ],
+    });
+
+    $('#table_separate').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: '/blangko-kk-pisah',
+        },
+        columns: [{
+                data: 'checkbox',
+                name: 'checkbox',
+                orderable: false,
+                searchable: false,
+            },
+            {
+                data: 'name',
+                name: 'name'
+            },
+            {
+                data: 'date',
+                name: 'date'
             },
             {
                 data: 'action',

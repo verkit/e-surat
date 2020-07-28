@@ -56,15 +56,10 @@
                                 class="rounded-circle profile-widget-picture">
                             <div class="profile-widget-items">
                                 <div class="profile-widget-item">
-                                    <div class="profile-widget-item-label">Jumlah Permohonan</div>
-                                    <div class="profile-widget-item-value">{{$user->letter_request->count()}}</div>
-                                </div>
-                                <div class="profile-widget-item">
-                                    <div class="profile-widget-item-label">Akun dibuat</div>
-                                    <div class="profile-widget-item-value">{{$user->created_at->diffForHumans()}}</div>
+                                    <div class="profile-widget-item-value">{{$user->name}}</div>
+                                    <div class="profile-widget-item-label">{{$user->villager->nik}}</div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="profile-widget-description">
                             <form method="POST" action="{{route('update.akun', $user->id)}}" enctype="multipart/form-data" autocomplete="off">

@@ -1,5 +1,7 @@
 <?php
 
+use App\FamilyCard;
+use App\MemberFamilyCard;
 use App\User;
 use App\Villager;
 use Illuminate\Database\Seeder;
@@ -35,6 +37,152 @@ class TestSeeder extends Seeder
             'ktp' => 'avatar-1.png',
             'kk' => 'avatar-1.png',
             'phone' => '08989899898'
+        ]);
+
+        FamilyCard::create([
+            'user_id' => 2,
+            'number' => '352',
+            'head_of_family' => 'warno',
+            'address' => 'awd',
+            'rt_rw' => '001/001',
+            'postal_code' => '63319',
+            'village' => 'simbatan',
+            'district' => 'nguntoronadi',
+            'city' => 'magetan',
+            'is_new' => 1,
+            'is_separate' => 0,
+            'province' => 'jawa timur',
+            // 'signature_id' => 1
+        ]);
+
+        MemberFamilyCard::create([
+            'family_card_id' => 1,
+            'nik' => '352',
+            'fullname' => 'warno',
+            'gender_id' => 1,
+            'birthplace' => 'Magetan',
+            'birthdate' => '25-10-1998',
+            'religion' => 'islam',
+            'education' => 'sma',
+            'profession' => 'wiraswasta',
+            'blood_type' => 'A',
+            'marital_status_id' => 1,
+            'marriage_date' => '25-10-2020',
+            'status_in_family' => 'kepala keluarga',
+            'citizenship' => 'WNI',
+            'father_name' => 'SEMI',
+            'mother_name' => 'ISMI',
+        ]);
+
+        MemberFamilyCard::create([
+            'family_card_id' => 1,
+            'nik' => '352',
+            'fullname' => 'warni',
+            'gender_id' => 2,
+            'birthplace' => 'Magetan',
+            'birthdate' => '25-10-1998',
+            'religion' => 'islam',
+            'education' => 'sma',
+            'profession' => 'wiraswasta',
+            'marital_status_id' => 1,
+            'marriage_date' => '25-10-2020',
+            'status_in_family' => 'kepala keluarga',
+            'citizenship' => 'WNI',
+            'father_name' => 'SEMI',
+            'mother_name' => 'ISMI',
+        ]);
+
+        MemberFamilyCard::create([
+            'family_card_id' => 1,
+            'nik' => '352',
+            'fullname' => 'warno',
+            'gender_id' => 1,
+            'birthplace' => 'Magetan',
+            'birthdate' => '25-10-1998',
+            'religion' => 'islam',
+            'education' => 'sma',
+            'profession' => 'wiraswasta',
+            'blood_type' => 'A',
+            'marital_status_id' => 1,
+            'marriage_date' => '25-10-2020',
+            'status_in_family' => 'kepala keluarga',
+            'citizenship' => 'WNI',
+            'father_name' => 'SEMI',
+            'mother_name' => 'ISMI',
+        ]);
+
+        MemberFamilyCard::create([
+            'family_card_id' => 1,
+            'nik' => '352',
+            'fullname' => 'warni',
+            'gender_id' => 2,
+            'birthplace' => 'Magetan',
+            'birthdate' => '25-10-1998',
+            'religion' => 'islam',
+            'education' => 'sma',
+            'profession' => 'wiraswasta',
+            'marital_status_id' => 1,
+            'marriage_date' => '25-10-2020',
+            'status_in_family' => 'kepala keluarga',
+            'citizenship' => 'WNI',
+            'father_name' => 'SEMI',
+            'mother_name' => 'ISMI',
+        ]);
+
+        MemberFamilyCard::create([
+            'family_card_id' => 1,
+            'nik' => '352',
+            'fullname' => 'warno',
+            'gender_id' => 1,
+            'birthplace' => 'Magetan',
+            'birthdate' => '25-10-1998',
+            'religion' => 'islam',
+            'education' => 'sma',
+            'profession' => 'wiraswasta',
+            'blood_type' => 'A',
+            'marital_status_id' => 1,
+            'marriage_date' => '25-10-2020',
+            'status_in_family' => 'kepala keluarga',
+            'citizenship' => 'WNI',
+            'father_name' => 'SEMI',
+            'mother_name' => 'ISMI',
+        ]);
+
+        MemberFamilyCard::create([
+            'family_card_id' => 1,
+            'nik' => '352',
+            'fullname' => 'warno',
+            'gender_id' => 1,
+            'birthplace' => 'Magetan',
+            'birthdate' => '25-10-1998',
+            'religion' => 'islam',
+            'education' => 'sma',
+            'profession' => 'wiraswasta',
+            'blood_type' => 'A',
+            'marital_status_id' => 1,
+            'marriage_date' => '25-10-2020',
+            'status_in_family' => 'kepala keluarga',
+            'citizenship' => 'WNI',
+            'father_name' => 'SEMI',
+            'mother_name' => 'ISMI',
+        ]);
+
+        MemberFamilyCard::create([
+            'family_card_id' => 1,
+            'nik' => '352',
+            'fullname' => 'warni',
+            'gender_id' => 2,
+            'birthplace' => 'Magetan',
+            'birthdate' => '25-10-1998',
+            'religion' => 'islam',
+            'education' => 'sma',
+            'profession' => 'wiraswasta',
+            'marital_status_id' => 1,
+            'marriage_date' => '25-10-2020',
+            'status_in_family' => 'kepala keluarga',
+            'citizenship' => 'WNI',
+            'father_name' => 'SEMI',
+            'mother_name' => 'ISMI',
         ]);
     }
 }
