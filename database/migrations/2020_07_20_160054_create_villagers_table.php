@@ -22,8 +22,8 @@ class CreateVillagersTable extends Migration
             $table->string('profession');
             $table->unsignedBigInteger('gender_id');
             $table->unsignedBigInteger('marital_status_id');
+            $table->unsignedBigInteger('religion_id');
             $table->string('address');
-            $table->string('religion');
             $table->string('last_education');
             $table->string('ktp');
             $table->string('kk');
@@ -32,6 +32,7 @@ class CreateVillagersTable extends Migration
 
             $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
             $table->foreign('gender_id')->on('genders')->references('id')->onDelete('cascade');
+            $table->foreign('religion_id')->on('religions')->references('id')->onDelete('cascade');
             $table->foreign('marital_status_id')->on('marital_statuses')->references('id')->onDelete('cascade');
         });
     }

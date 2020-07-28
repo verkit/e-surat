@@ -1,6 +1,7 @@
 <?php
 
 use App\FamilyCard;
+use App\KTP;
 use App\MemberFamilyCard;
 use App\User;
 use App\Villager;
@@ -32,7 +33,7 @@ class TestSeeder extends Seeder
             'gender_id' => 1,
             'marital_status_id' => 1,
             'address' => 'jalan jalan aja',
-            'religion' => 'islam',
+            'religion_id' => 1,
             'last_education' => 'SD',
             'ktp' => 'avatar-1.png',
             'kk' => 'avatar-1.png',
@@ -183,6 +184,25 @@ class TestSeeder extends Seeder
             'citizenship' => 'WNI',
             'father_name' => 'SEMI',
             'mother_name' => 'ISMI',
+        ]);
+
+        KTP::create([
+            'user_id' => 1,
+            'nik' => '123123123',
+            'fullname' => 'asdasd',
+            'birthdate' => '12',
+            'birthmonth' => '02',
+            'birthyear' => '1998',
+            'birthplace' => 'Magetan',
+            'profession' => 'Pelajar',
+            'address' => 'jln s',
+            'rt' => '001',
+            'rw' => '001',
+            'gender_id' => 1,
+            'citizenship_id' => 1,
+            'blood_type_id' => 1,
+            'marital_status_id' => 1,
+            'religion_id' => 1,
         ]);
     }
 }

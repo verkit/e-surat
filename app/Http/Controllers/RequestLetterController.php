@@ -35,13 +35,16 @@ class RequestLetterController extends Controller
                         <label for="delete' . $data->id . '" class="custom-control-label">&nbsp;</label>
                     </div>';
                 })
+                ->addColumn('account', function ($data) {
+                    return '<a name="detail" target="_blank" href="/akun/' . $data->user_id . '">'.$data->name.'</a>';
+                })
                 ->addColumn('date', function ($data) {
                     return $data->created_at->format('Y M d, H:i');
                 })
                 ->addColumn('action', function ($data) {
                     return '<a name="detail" target="_blank" href="/permohonan-surat/' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
                 })
-                ->rawColumns(['checkbox', 'action', 'date'])
+                ->rawColumns(['checkbox', 'action', 'date', 'account'])
                 ->make(true);
         }
         return view('dashboard.letter_requests.index');
