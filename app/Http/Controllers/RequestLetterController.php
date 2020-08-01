@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Letter;
 use App\RequestForm;
 use App\RequestLetter;
+use App\VillageAdministrator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Novay\WordTemplate\WordTemplate;
@@ -36,7 +37,7 @@ class RequestLetterController extends Controller
                     </div>';
                 })
                 ->addColumn('account', function ($data) {
-                    return '<a name="detail" target="_blank" href="/akun/' . $data->user_id . '">'.$data->name.'</a>';
+                    return '<a name="detail" target="_blank" href="/akun/' . $data->user_id . '">' . $data->name . '</a>';
                 })
                 ->addColumn('date', function ($data) {
                     return $data->created_at->format('Y M d, H:i');
@@ -80,10 +81,6 @@ class RequestLetterController extends Controller
         return view('dashboard.letter_requests.success');
     }
 
-    public function show()
-    {
-        return view('dashboard.letter_requests.detail');
-    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -93,8 +90,8 @@ class RequestLetterController extends Controller
     public function edit($id)
     {
         $data = RequestLetter::find($id);
-        $form = RequestForm::where('req_letter_id', $data->id)->get();
-        return view('dashboard.letter_requests.edit', compact('data', 'form'));
+        $forms = RequestForm::where('req_letter_id', $data->id)->get();
+        return view('dashboard.letter_requests.edit', compact('data', 'forms'));
     }
 
     public function print($id)
@@ -161,11 +158,26 @@ class RequestLetterController extends Controller
             'is_done' => 0
         ]);
 
+        $ketua = VillageAdministrator::where('position', 'Kepala Desa')->first();
         foreach ($request->form_id as $key => $value) {
+
+            $text = $request->form_name[$key];
+            if ($value == 46) {
+                $text = "Simbatan";
+            } elseif ($value == 47) {
+                $text = $surat->created_at->isoFormat('d MMMM Y');
+            } elseif ($value == 48) {
+                $text = $ketua->position;
+            } elseif ($value == 49) {
+                $text = $ketua->name;
+            } elseif ($value == 50) {
+                $text = $ketua->address;
+            }
+
             RequestForm::create([
                 'form_id' => $value,
                 'req_letter_id' => $surat->id,
-                'text' => $request->form_name[$key]
+                'text' => $text
             ]);
         }
     }
