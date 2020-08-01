@@ -1,4 +1,4 @@
-<form action="/test" method="POST">
+<form action="/test" method="POST" autocomplete="off">
     @csrf
     <input type="text" name="surat_id" hidden value="{{$surat->id}}">
     @foreach ($surat->forms as $item)

@@ -113,11 +113,11 @@ class FormSeeder extends Seeder
             ['[BIDANG_USAHA]', 0],
             ['[NAMA_USAHA]', 0],
             ['[NOMOR_SURAT]', 1],
-            ['[NAMA_DESA]', 0],
-            ['[TANGGAL]', 0],
-            ['[JABATAN]', 0],
-            ['[NAMA_PEJABAT]', 0],
-            ['[ALAMAT_PEJABAT]', 0],
+            ['[NAMA_DESA]', 1],
+            ['[TANGGAL]', 1],
+            ['[JABATAN]', 1],
+            ['[NAMA_PEJABAT]', 1],
+            ['[ALAMAT_PEJABAT]', 1],
             ['[ACARA]', 0],
             ['[TANGGAL_PELAKSANAAN]', 0]
         ];

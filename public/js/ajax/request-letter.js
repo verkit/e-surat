@@ -25,6 +25,32 @@ $(document).ready(function () {
         }
     });
 
+    $(document).on('click', '#delete_success_table', function () {
+        let id = [];
+        if (confirm("Apakah anda yakin ingin menghapus data ini?")) {
+            $(".data-checkbox:checked").each(function () {
+                id.push($(this).val());
+            });
+            if (id.length > 0) {
+                $.ajax({
+                    url: baseUrl + '/md/permohonan-surat/',
+                    method: 'delete',
+                    data: {
+                        _token: _token,
+                        id: id,
+                    },
+                    success: function (data) {
+                        alert('Berhasil menghapus data');
+                        $("#success_table").DataTable().ajax.reload();
+                        $("#checkbox-all").prop('checked', false);
+                    }
+                });
+            } else {
+                alert('Harap pilih data');
+            }
+        }
+    });
+
     $("#checkbox-all").click(function () {
         if (this.checked) {
             $(".data-checkbox").prop('checked', true);
