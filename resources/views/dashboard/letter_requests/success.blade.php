@@ -62,7 +62,7 @@
                                                         id="checkbox-all">
                                                     <label for="checkbox-all"
                                                         class="custom-control-label">&nbsp;</label>
-                                                    <button type="button" class="btn btn-danger btn-sm" id="delete"
+                                                    <button type="button" class="btn btn-danger btn-sm" id="delete_success_table"
                                                         name="delete">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
