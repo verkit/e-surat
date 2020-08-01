@@ -16,6 +16,7 @@ $(document).ready(function () {
                     success: function (data) {
                         alert('Berhasil menghapus data');
                         $("#table").DataTable().ajax.reload();
+                        $("#success_table").DataTable().ajax.reload();
                         $("#checkbox-all").prop('checked', false);
                     }
                 });
