@@ -39,7 +39,7 @@ class CreateKTPSTable extends Migration
             $table->foreign('citizenship_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('blood_type_id')->references('id')->on('blood_types')->onDelete('cascade');
             $table->foreign('marital_status_id')->references('id')->on('marital_statuses')->onDelete('cascade');
-            $table->foreign('religion_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('religion_id')->references('id')->on('religions')->onDelete('cascade');
             $table->foreign('signature_id')->references('id')->on('village_administrators')->onDelete('cascade');
         });
     }

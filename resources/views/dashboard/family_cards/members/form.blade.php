@@ -30,22 +30,13 @@
                     </div>
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Jenis Kelamin</label>
-                        <div class="selectgroup w-100">
-                            <label class="selectgroup-item">
-                                <input type="radio" name="gender" value="1" class="selectgroup-input"
-                                @if($data->gender_id == 1)
-                                checked
-                                @endif>
-                                <span class="selectgroup-button">Laki-Laki</span>
-                            </label>
-                            <label class="selectgroup-item">
-                                <input type="radio" name="gender" value="2" class="selectgroup-input"
-                                @if($data->gender_id == 2)
-                                checked
-                                @endif >
-                                <span class="selectgroup-button">Perempuan</span>
-                            </label>
-                        </div>
+                        <select class="form-control" name="gender">
+                            @foreach ($genders as $item)
+                            <option value="{{$item->id}}" @if ($item->id == $data->gender_id)
+                                selected
+                                @endif>{{$item->name}}</option>
+                            @endforeach
+                        </select>
                         @error('gender')
                         <div class="invalid-feedback">
                             {{$message}}
@@ -66,9 +57,8 @@
                     </div>
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Tanggal Lahir</label>
-                        <input type="text" class="form-control @error('birthdate') is-invalid
+                        <input type="date" class="form-control @error('birthdate') is-invalid
                             @enderror" name="birthdate" value="{{$data->birthdate}}">
-                        <small>Contoh format : 11-09-1990</small>
                         @error('birthdate')
                         <div class="invalid-feedback">
                             {{$message}}
@@ -79,8 +69,13 @@
                 <div class="row">
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Agama</label>
-                        <input type="text" class="form-control @error('religion') is-invalid
-                            @enderror" name="religion" value="{{$data->religion}}">
+                        <select class="form-control" name="religion">
+                            @foreach ($religions as $item)
+                            <option value="{{$item->id}}" @if ($item->id == $data->religion_id)
+                                selected
+                                @endif>{{$item->name}}</option>
+                            @endforeach
+                        </select>
                         @error('religion')
                         <div class="invalid-feedback">
                             {{$message}}
@@ -111,8 +106,13 @@
                     </div>
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Golongan Darah</label>
-                        <input type="text" class="form-control @error('blood_type') is-invalid
-                            @enderror" name="blood_type" value="{{$data->blood_type}}">
+                        <select class="form-control" name="blood_type">
+                            @foreach ($blood_types as $item)
+                            <option value="{{$item->id}}" @if ($item->id == $data->blood_type_id)
+                                selected
+                                @endif>{{$item->name}}</option>
+                            @endforeach
+                        </select>
                         @error('blood_type')
                         <div class="invalid-feedback">
                             {{$message}}
@@ -138,9 +138,8 @@
                     </div>
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Tanggal Pernikahan</label>
-                        <input type="text" class="form-control @error('marriage_date') is-invalid
+                        <input type="date" class="form-control @error('marriage_date') is-invalid
                             @enderror" name="marriage_date" value="{{$data->marriage_date}}">
-                        <small>Contoh format : 11-09-1990</small>
                         @error('marriage_date')
                         <div class="invalid-feedback">
                             {{$message}}
@@ -161,8 +160,13 @@
                     </div>
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Kewarganegaraan</label>
-                        <input type="text" class="form-control @error('citizenship') is-invalid
-                            @enderror" name="citizenship" value="{{$data->citizenship}}">
+                        <select class="form-control" name="citizenship">
+                            @foreach ($citizenships as $item)
+                            <option value="{{$item->id}}" @if ($item->id == $data->citizenship_id)
+                                selected
+                                @endif>{{$item->name}}</option>
+                            @endforeach
+                        </select>
                         @error('citizenship')
                         <div class="invalid-feedback">
                             {{$message}}

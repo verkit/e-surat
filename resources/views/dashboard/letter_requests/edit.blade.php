@@ -62,8 +62,12 @@
                                 @foreach ($data->letter->forms as $key => $item)
                                 <div class="form-group">
                                     <label>{{$item->form_name}}</label>
-                                    <input type="text" class="form-control @error('form_name[]') is-invalid
-                                        @enderror" required name="form_name[]" value="{{$forms[$key]->text}}">
+                                    <input @if ($item->is_date == 1)
+                                    type="date"
+                                    @else
+                                    type="text"
+                                    @endif class="form-control @error('form_name[]') is-invalid
+                                    @enderror" required name="form_name[]" value="{{$forms[$key]->text}}">
                                     <input type="text" class="form-control" name="form_id[]"
                                         value="{{$forms[$key]->id}}" hidden readonly>
                                     @error('form_name[]')

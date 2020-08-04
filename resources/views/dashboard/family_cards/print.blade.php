@@ -115,13 +115,13 @@
             <td>{{$item->gender->name}}</td>
             <td>{{$item->birthplace}}</td>
             <td>{{$item->birthdate}}</td>
-            <td>{{$item->religion}}</td>
+            <td>{{$item->religion->name}}</td>
             <td>{{$item->education}}</td>
             <td>{{$item->profession}}</td>
-            @if (!$item->blood_type)
+            @if (!$item->blood_type_id)
             <td class="text-center">-</td>
             @else
-            <td class="text-center">{{$item->blood_type}}</td>
+            <td class="text-center">{{$item->blood_type->name}}</td>
             @endif
         </tr>
         @endforeach
@@ -149,7 +149,7 @@
             <td>{{$item->marital_status->name}}</td>
             <td>{{$item->marriage_date}}</td>
             <td>{{$item->status_in_family}}</td>
-            <td>{{$item->citizenship}}</td>
+            <td>{{$item->citizenship->name}}</td>
             @if (!$item->passport)
             <td class="text-center">-</td>
             @else

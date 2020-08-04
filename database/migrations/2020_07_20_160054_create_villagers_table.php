@@ -16,18 +16,18 @@ class CreateVillagersTable extends Migration
         Schema::create('villagers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('nik');
-            $table->date('birthdate');
-            $table->string('birthplace');
-            $table->string('profession');
-            $table->unsignedBigInteger('gender_id');
-            $table->unsignedBigInteger('marital_status_id');
-            $table->unsignedBigInteger('religion_id');
-            $table->string('address');
-            $table->string('last_education');
-            $table->string('ktp');
-            $table->string('kk');
-            $table->string('phone');
+            $table->string('nik')->nullable();
+            $table->date('birthdate')->nullable();
+            $table->string('birthplace')->nullable();
+            $table->string('profession')->nullable();
+            $table->unsignedBigInteger('gender_id')->nullable();
+            $table->unsignedBigInteger('marital_status_id')->nullable();
+            $table->unsignedBigInteger('religion_id')->nullable();
+            $table->string('address')->nullable();
+            $table->string('last_education')->nullable();
+            $table->string('ktp')->nullable();
+            $table->string('kk')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');

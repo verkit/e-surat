@@ -72,10 +72,6 @@ $(document).ready(function () {
                 searchable: false,
             },
             {
-                data: 'nik',
-                name: 'nik'
-            },
-            {
                 data: 'account',
                 name: 'account'
             },
@@ -105,10 +101,6 @@ $(document).ready(function () {
                 name: 'checkbox',
                 orderable: false,
                 searchable: false,
-            },
-            {
-                data: 'nik',
-                name: 'nik'
             },
             {
                 data: 'name',

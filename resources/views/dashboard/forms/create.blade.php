@@ -66,6 +66,25 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label class="form-label">Berformat tanggal?</label>
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                            <div class="selectgroup w-100">
+                                                <label class="selectgroup-item">
+                                                    <input type="radio" name="is_date" value="1"
+                                                        class="selectgroup-input">
+                                                    <span class="selectgroup-button">Iya</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="radio" name="is_date" value="0"
+                                                        class="selectgroup-input" checked>
+                                                    <span class="selectgroup-button">Tidak</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="form-label">Hanya diisi oleh perangkat desa?</label>
                                     <div class="row">
                                         <div class="col-12 col-md-6">
