@@ -19,4 +19,16 @@ class MemberFamilyCard extends Model
     public function marital_status(){
         return $this->belongsTo('App\MaritalStatus');
     }
+
+    public function citizenship(){
+        return $this->belongsTo('App\Citizenship');
+    }
+
+    public function religion(){
+        return $this->belongsTo('App\Religion');
+    }
+
+    public function blood_type(){
+        return $this->belongsTo('App\BloodType');
+    }
 }

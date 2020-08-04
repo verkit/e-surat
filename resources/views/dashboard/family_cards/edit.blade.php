@@ -24,6 +24,16 @@
             <h1>Cetak Blangko KK</h1>
         </div>
         <div class="section-body">
+            @if ($data->signature == null)
+            <div class="alert alert-primary alert-dismissible show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span>×</span>
+                    </button>
+                    Harap pilih penandatangan dan simpan sebelum mencetak
+                </div>
+            </div>
+            @endif
             @if (session('success'))
             <div class="alert alert-success alert-dismissible show fade">
                 <div class="alert-body">

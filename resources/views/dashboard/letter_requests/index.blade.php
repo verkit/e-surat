@@ -68,7 +68,6 @@
                                                     </button>
                                                 </div>
                                             </th>
-                                            <th style="max-width: 50px">NIK</th>
                                             <th>Nama</th>
                                             <th>Surat</th>
                                             <th>Tanggal Pengajuan</th>

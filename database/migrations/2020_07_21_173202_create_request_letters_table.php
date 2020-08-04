@@ -16,7 +16,7 @@ class CreateRequestLettersTable extends Migration
         Schema::create('request_letters', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('letter_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->boolean('is_done');
             $table->timestamps();
 

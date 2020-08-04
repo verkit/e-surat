@@ -44,7 +44,7 @@
                                             autofocus>
                                         @error('email')
                                         <span class="invalid-feedback">
-                                            <strong>Masukkan email yang valid</strong>
+                                            <strong>{{$message}}</strong>
                                         </span>
                                         @enderror
                                     </div>
@@ -66,7 +66,7 @@
 
                                         @error('password')
                                         <span class="invalid-feedback">
-                                            <strong>Masukkan password</strong>
+                                            <strong>{{$message}}</strong>
                                         </span>
                                         @enderror
                                     </div>
@@ -78,6 +78,9 @@
                                 </form>
                             </div>
                         </div>
+                        <div class="mt-5 text-muted text-center">
+                            Belum punya akun? <a href="{{route('register')}}">Daftar</a>
+                          </div>
                         <div class="simple-footer">
                             Copyright &copy; 2020 <div class="bullet"></div> Simbatan
                         </div>

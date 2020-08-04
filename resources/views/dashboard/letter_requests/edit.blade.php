@@ -30,6 +30,17 @@
             </div>
             @endif
 
+            @if ($data->isdone == 0)
+            <div class="alert alert-danger alert-dismissible show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span>×</span>
+                    </button>
+                    Mohon diisi nomor surat, dan isian yang masih kosong lainnya
+                </div>
+            </div>
+            @endif
+
             <h2 class="section-title">Hi, {{Auth::user()->name}}</h2>
             <p class="section-lead">
                 Anda dapat melakukan percetakan form pada halaman ini
@@ -51,10 +62,14 @@
                                 @foreach ($data->letter->forms as $key => $item)
                                 <div class="form-group">
                                     <label>{{$item->form_name}}</label>
-                                    <input type="text" class="form-control @error('form_name[]') is-invalid
-                                        @enderror" required name="form_name[]" value="{{$form[$key]->text}}">
+                                    <input @if ($item->is_date == 1)
+                                    type="date"
+                                    @else
+                                    type="text"
+                                    @endif class="form-control @error('form_name[]') is-invalid
+                                    @enderror" required name="form_name[]" value="{{$forms[$key]->text}}">
                                     <input type="text" class="form-control" name="form_id[]"
-                                        value="{{$form[$key]->id}}" hidden readonly>
+                                        value="{{$forms[$key]->id}}" hidden readonly>
                                     @error('form_name[]')
                                     <div class="invalid-feedback">
                                         {{$message}}
