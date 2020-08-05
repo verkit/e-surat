@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/umum', 'Client\RequestLetterController@general')->name('surat-umum');
-Route::get('/ktp', 'Client\RequestLetterController@ktp')->name('buat.ktp');
 Route::get('/kk', 'Client\RequestLetterController@kk')->name('buat.kk');
 Auth::routes();
 
@@ -27,6 +26,7 @@ Route::group(['middleware' => ['web', 'auth', 'role:user']], function () {
     Route::post('/umum/{id}', 'Client\RequestLetterController@store_general_letter')->name('buat.permohonan-surat');
     Route::delete('/umum/{id}', 'Client\RequestLetterController@delete_general_letter')->name('hapus.permohonan-surat');
 
+    Route::get('/ktp', 'Client\RequestLetterController@ktp')->name('buat.ktp');
     Route::post('/ktp', 'Client\RequestLetterController@store_ktp')->name('simpan.ktp');
     Route::delete('/ktp/{id}', 'Client\RequestLetterController@delete_ktp')->name('hapus.ktp');
 
