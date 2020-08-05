@@ -31,13 +31,16 @@ class ProfileController extends Controller
             'address' => 'required|max:255',
             'profession' => 'required|max:255',
             'religion' => 'required|max:255',
+            'gender' => 'required',
+            'marital_status' => 'required',
+            'last_education' => 'required',
             'birthplace' => 'required|max:255',
             'birthdate' => 'required|date',
             'email' => 'required|email',
-            'phone' => 'required|min:11,max:13',
+            'hp' => 'required|between:11,13',
             'nik' => 'required|size:16',
-            'ktp' => 'nullable|file|mimes:png,jpg,jpeg,pdf|max:2048',
-            'kk' => 'required|file|mimes:png,jpg,jpeg,pdf|max:2048'
+            'ktp' => 'file|mimes:png,jpg,jpeg,pdf|max:2048',
+            'kk' => 'file|mimes:png,jpg,jpeg,pdf|max:2048'
         ]);
 
         $user = User::find(Auth::id());

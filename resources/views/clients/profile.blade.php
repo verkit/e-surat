@@ -86,7 +86,7 @@
             <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
                 <div class="card register-card p-1 p-sm-4 mb-50 wow fadeInUp" data-wow-delay="200ms"
                     data-wow-duration="1000ms">
-                    <form method="POST" action="{{route('update.profil', auth()->id())}}" enctype="multipart/form-data"
+                    <form method="POST" action="{{route('update.profil')}}" enctype="multipart/form-data"
                         autocomplete="off">
                         @method('put')
                         @csrf
@@ -253,6 +253,8 @@
                                             @enderror" name="ktp" accept=".jpg,.jpeg,.png,.pdf">
                                     @if ($user->villager->ktp)
                                     <small>Silahkan upload KTP, apabila ingin memperbaruinya</small>
+                                    @else
+                                    <small>Kosongi apabila belum mempunyai KTP</small>
                                     @endif
                                     @error('ktp')
                                     <div class="invalid-feedback">

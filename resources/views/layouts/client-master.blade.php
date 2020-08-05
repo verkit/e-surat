@@ -95,7 +95,7 @@
                     <!-- Copywrite Text-->
                     <div class="footer--content-text">
                         <p class="mb-1">Desa Simbatan, Kec. Nguntoronadi, Kab. Magetan </p>
-                        <p class="mb-0">Dibuat oleh <a href="#" target="_blank">Verdy Bangkit (KKN 34 UNEJ 2020)</a></p>
+                        {{-- <p class="mb-0">Dibuat oleh <a href="#" target="_blank">Verdy Bangkit (KKN 34 UNEJ 2020)</a></p> --}}
                     </div>
                 </div>
             </div>
