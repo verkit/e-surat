@@ -26,7 +26,6 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'name' => 'required|max:255',
             'address' => 'required|max:255',
