@@ -1,3 +1,6 @@
+@php
+$req = \App\RequestLetter::where('is_done', 0)->get();
+@endphp
 <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
         <a href="{{route('home')}}">e-surat</a>
@@ -8,13 +11,16 @@
     <ul class="sidebar-menu">
         <li class="menu-header">Menu</li>
         <li class="dropdown @yield('menu-1')">
-            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                    class="far fa-file-alt"></i><span>Permohonan Masuk</span></a>
+            <a href="#" class="nav-link has-dropdown @if ($req->count() > 0)
+                beep
+            @endif" data-toggle="dropdown"><i class="far fa-file-alt"></i><span>Permohonan Masuk</span></a>
             <ul class="dropdown-menu">
-                <li class="@yield('menu-1-1')"><a class="nav-link" href="{{route('permohonan-surat')}}">Belum Cetak</a>
+                <li class="@yield('menu-1-1')"><a class="nav-link @if ($req->count() > 0)
+                    beep beep-sidebar
+                @endif" href="{{route('permohonan-surat')}}">Belum Cetak</a>
                 </li>
-                <li class="@yield('menu-1-2')"><a class="nav-link"
-                        href="{{route('permohonan-surat.sukses')}}">Sudah Cetak</a></li>
+                <li class="@yield('menu-1-2')"><a class="nav-link" href="{{route('permohonan-surat.sukses')}}">Sudah
+                        Cetak</a></li>
             </ul>
         </li>
         <li class="dropdown @yield('menu-7')">
