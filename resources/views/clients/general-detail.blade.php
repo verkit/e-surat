@@ -44,6 +44,11 @@
                                     type="text"
                                     @endif
                                     name="form_name[]" required>
+                                    @if ($item->form_code == "[KETERANGAN]")
+                                    <small>contoh: surat keterangan belum menikah/untuk melamar pekerjaan/dll</small>
+                                    @elseif($item->form_code == "[NAMA]")
+                                    <small>Tuliskan nama lengkap</small>
+                                    @endif
                                     <input type="text" name="form_id[]" value="{{$item->id}}" readonly hidden>
                                 </div>
                                 @else

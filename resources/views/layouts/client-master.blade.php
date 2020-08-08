@@ -42,6 +42,7 @@
                                 <li><a href="/#beranda">Beranda</a></li>
                                 <li><a href="/#layanan">Layanan</a></li>
                                 <li><a href="/#faq">Tanya Jawab</a></li>
+                                <li><a href="https://simbatan.desa.id" target="_blank">Web Desa</a></li>
                                 @if (Auth::check())
                                 @if (Auth::user()->role == "admin")
                                 <li><a href="{{route('home')}}">Dashboard</a></li>
@@ -55,7 +56,6 @@
                                     </ul>
                                 </li>
                                 @endif
-
                                 @endif
                             </ul>
                             <!-- Login Button-->
