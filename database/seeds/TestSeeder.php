@@ -53,6 +53,7 @@ class TestSeeder extends Seeder
             'is_new' => 1,
             'is_separate' => 0,
             'province' => 'jawa timur',
+            'is_done' => 0,
             // 'signature_id' => 1
         ]);
 
@@ -91,6 +92,7 @@ class TestSeeder extends Seeder
             'citizenship_id' => 1,
             'blood_type_id' => 1,
             'marital_status_id' => 1,
+            'is_done' => 0,
             'religion_id' => 1,
         ]);
     }

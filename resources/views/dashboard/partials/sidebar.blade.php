@@ -1,5 +1,7 @@
 @php
 $req = \App\RequestLetter::where('is_done', 0)->get();
+$ktp = \App\FamilyCard::where('is_done', 0)->get();
+$kk = \App\KTP::where('is_done', 0)->get();
 @endphp
 <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
@@ -24,17 +26,23 @@ $req = \App\RequestLetter::where('is_done', 0)->get();
             </ul>
         </li>
         <li class="dropdown @yield('menu-7')">
-            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+            <a href="#" class="nav-link has-dropdown @if ($kk->count() > 0)
+                beep
+            @endif" data-toggle="dropdown"><i
                     class="far fa-file-alt"></i><span>Blangko KK</span></a>
             <ul class="dropdown-menu">
-                <li class="@yield('menu-7-1')"><a class="nav-link" href="{{route('kk')}}">Baru</a>
+                <li class="@yield('menu-7-1')"><a class="nav-link @if ($kk->count() > 0)
+                    beep beep-sidebar
+                @endif" href="{{route('kk')}}">Baru</a>
                 </li>
                 <li class="@yield('menu-7-2')"><a class="nav-link" href="{{route('kk.pisah')}}">Pisah</a>
                 </li>
             </ul>
         </li>
         <li class="@yield('menu-8')">
-            <a href="{{route('ktp')}}" class="nav-link"><i class="fas fa-file-alt"></i><span>Blangko KTP</span></a>
+            <a href="{{route('ktp')}}" class="nav-link @if ($ktp->count() > 0)
+                beep beep-sidebar
+            @endif"><i class="fas fa-file-alt"></i><span>Blangko KTP</span></a>
         </li>
         <li class="dropdown @yield('menu-2')">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-align-left"></i>

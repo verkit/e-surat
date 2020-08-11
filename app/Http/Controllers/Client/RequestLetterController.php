@@ -127,6 +127,7 @@ class RequestLetterController extends Controller
             'blood_type_id' =>  $request->golongan_darah,
             'marital_status_id' =>  $request->status_perkawinan,
             'religion_id' =>  $request->agama,
+            'is_done' => 0,
             'user_id' => auth()->id()
         ]);
 
@@ -183,6 +184,7 @@ class RequestLetterController extends Controller
         $kk->user_id = auth()->id();
         $kk->is_new = $request->is_new;
         $kk->is_separate = $request->is_separate;
+        $kk->is_done = 0;
         $kk->save();
 
         return redirect()->route('buat.anggota.kk', $kk->id)->with('success', 'Silahkan tambahkan anggota keluarga');

@@ -26,6 +26,7 @@ class CreateKTPSTable extends Migration
             $table->string('address')->nullable();
             $table->string('rt')->nullable();
             $table->string('rw')->nullable();
+            $table->boolean('is_done');
             $table->unsignedBigInteger('gender_id')->nullable();
             $table->unsignedBigInteger('citizenship_id')->nullable();
             $table->unsignedBigInteger('blood_type_id')->nullable();
