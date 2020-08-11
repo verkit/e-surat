@@ -39,7 +39,14 @@ class KTPController extends Controller
                 ->addColumn('action', function ($data) {
                     return '<a name="detail" target="_blank" href="/blangko-ktp/' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
                 })
-                ->rawColumns(['checkbox', 'action', 'date'])
+                ->addColumn('name', function ($data) {
+                    if ($data->is_done == 0) {
+                        return '<b>' . $data->fullname . '</b>';
+                    } else {
+                        return $data->fullname;
+                    }
+                })
+                ->rawColumns(['checkbox', 'action', 'date', 'name'])
                 ->make(true);
         }
 
@@ -67,6 +74,8 @@ class KTPController extends Controller
     public function print($id)
     {
         $data = KTP::find($id);
+        $data->is_done = 1;
+        $data->save();
 
         $forms = [];
         $forms['[A1]'] = '-';

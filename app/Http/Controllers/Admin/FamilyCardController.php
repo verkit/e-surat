@@ -33,7 +33,14 @@ class FamilyCardController extends Controller
                 ->addColumn('action', function ($data) {
                     return '<a name="detail" target="_blank" href="/blangko-kk/' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
                 })
-                ->rawColumns(['checkbox', 'action', 'date'])
+                ->addColumn('name', function ($data) {
+                    if ($data->is_done == 0) {
+                        return '<b>' . $data->head_of_family . '</b>';
+                    } else {
+                        return $data->head_of_family;
+                    }
+                })
+                ->rawColumns(['checkbox', 'action', 'date', 'name'])
                 ->make(true);
         }
         return view('dashboard.family_cards.index');
@@ -61,7 +68,14 @@ class FamilyCardController extends Controller
                 ->addColumn('action', function ($data) {
                     return '<a name="detail" target="_blank" href="/blangko-kk/' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
                 })
-                ->rawColumns(['checkbox', 'action', 'date'])
+                ->addColumn('name', function ($data) {
+                    if ($data->is_done == 0) {
+                        return '<b>' . $data->head_of_family . '</b>';
+                    } else {
+                        return $data->head_of_family;
+                    }
+                })
+                ->rawColumns(['checkbox', 'action', 'date', 'name'])
                 ->make(true);
         }
         return view('dashboard.family_cards.separate');
@@ -78,6 +92,8 @@ class FamilyCardController extends Controller
     public function print($id)
     {
         $data = FamilyCard::find($id);
+        $data->is_done = 1;
+        $data->save();
         $members = MemberFamilyCard::where('family_card_id', $id)->get();
         $pdf = PDF::setPaper('folio', 'landscape')->loadview('dashboard.family_cards.print', compact('data', 'members'));
         return $pdf->stream('test');

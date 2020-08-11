@@ -46,8 +46,8 @@ $(document).ready(function () {
                 searchable: false,
             },
             {
-                data: 'fullname',
-                name: 'fullname'
+                data: 'name',
+                name: 'name'
             },
             {
                 data: 'date',

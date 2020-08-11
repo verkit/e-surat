@@ -27,6 +27,7 @@ class CreateFamilyCardsTable extends Migration
             $table->string('province')->nullable();
             $table->boolean('is_new');
             $table->boolean('is_separate');
+            $table->boolean('is_done');
             $table->unsignedBigInteger('signature_id')->nullable();
             $table->timestamps();
 
