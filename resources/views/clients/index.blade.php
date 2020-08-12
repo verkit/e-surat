@@ -26,7 +26,7 @@
                         {{-- <a class="btn saasbox-btn white-btn mt-3" href="#">More About
                                 Us</a> --}}
                         <a class="btn saasbox-btn mt-3 white-btn video-play-btn"
-                            href="https://www.youtube.com/watch?v=X_93H_60Pls" data-effect="mfp-zoom-in"><i
+                            href="https://www.youtube.com/watch?v=rQxCOL9gAxQ" data-effect="mfp-zoom-in"><i
                                 class="mr-1 lni-play"></i>Panduan</a></div>
                 </div>
             </div>
