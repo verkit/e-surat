@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\BloodType;
 use App\Citizenship;
+use App\Education;
 use App\FamilyCard;
 use App\Gender;
 use App\Http\Controllers\Controller;
@@ -14,6 +15,7 @@ use App\MemberFamilyCard;
 use App\Religion;
 use App\RequestForm;
 use App\RequestLetter;
+use App\StatusFamily;
 use App\VillageAdministrator;
 use DateTime;
 use Illuminate\Http\Request;
@@ -145,16 +147,6 @@ class RequestLetterController extends Controller
         return view('clients.kk.index');
     }
 
-    public function kk_baru()
-    {
-        return view('clients.kk.baru');
-    }
-
-    public function kk_pisah()
-    {
-        return view('clients.kk.pisah');
-    }
-
     public function store_kk(Request $request)
     {
         $request->validate(
@@ -182,8 +174,6 @@ class RequestLetterController extends Controller
         $kk->postal_code = $request->kode_pos;
         $kk->province = $request->provinsi;
         $kk->user_id = auth()->id();
-        $kk->is_new = $request->is_new;
-        $kk->is_separate = $request->is_separate;
         $kk->is_done = 0;
         $kk->save();
 
@@ -201,7 +191,9 @@ class RequestLetterController extends Controller
         $blood_types = BloodType::all();
         $religions = Religion::all();
         $citizenships = Citizenship::all();
-        return view('clients.kk.anggota', compact('kk', 'genders', 'marital_statuses', 'blood_types', 'religions', 'citizenships'));
+        $educations = Education::all();
+        $status_family = StatusFamily::all();
+        return view('clients.kk.anggota', compact('kk', 'genders', 'marital_statuses', 'blood_types', 'religions', 'citizenships', 'educations', 'status_family'));
     }
 
     public function store_anggota_kk(Request $request, $id)
@@ -233,12 +225,12 @@ class RequestLetterController extends Controller
         $anggota->birthplace = $request->tempat_lahir;
         $anggota->birthdate = $request->tanggal_lahir;
         $anggota->religion_id = $request->agama;
-        $anggota->education = $request->pendidikan;
+        $anggota->education_id = $request->pendidikan;
         $anggota->profession = $request->pekerjaan;
         $anggota->blood_type_id = $request->golongan_darah;
         $anggota->marital_status_id = $request->status_perkawinan;
         $anggota->marriage_date = $request->tanggal_pernikahan;
-        $anggota->status_in_family = $request->status_hubungan;
+        $anggota->status_in_family_id = $request->status_hubungan;
         $anggota->citizenship_id = $request->kewarganegaraan;
         $anggota->passport = $request->passport;
         $anggota->kitap = $request->kitap;
@@ -269,7 +261,9 @@ class RequestLetterController extends Controller
         $blood_types = BloodType::all();
         $religions = Religion::all();
         $citizenships = Citizenship::all();
-        return view('clients.myletter.kk-anggota', compact('fc', 'data', 'genders', 'marital_statuses', 'blood_types', 'religions', 'citizenships'));
+        $educations = Education::all();
+        $status_family = StatusFamily::all();
+        return view('clients.myletter.kk-anggota', compact('fc', 'data', 'genders', 'marital_statuses', 'blood_types', 'religions', 'citizenships', 'educations', 'status_family'));
     }
 
     public function update_anggota_kk(Request $request, $id)
@@ -301,12 +295,12 @@ class RequestLetterController extends Controller
         $anggota->birthplace = $request->tempat_lahir;
         $anggota->birthdate = $request->tanggal_lahir;
         $anggota->religion_id = $request->agama;
-        $anggota->education = $request->pendidikan;
+        $anggota->education_id = $request->pendidikan;
         $anggota->profession = $request->pekerjaan;
         $anggota->blood_type_id = $request->golongan_darah;
         $anggota->marital_status_id = $request->status_perkawinan;
         $anggota->marriage_date = $request->tanggal_pernikahan;
-        $anggota->status_in_family = $request->status_hubungan;
+        $anggota->status_in_family_id = $request->status_hubungan;
         $anggota->citizenship_id = $request->kewarganegaraan;
         $anggota->passport = $request->passport;
         $anggota->kitap = $request->kitap;

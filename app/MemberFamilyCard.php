@@ -31,4 +31,12 @@ class MemberFamilyCard extends Model
     public function blood_type(){
         return $this->belongsTo('App\BloodType');
     }
+
+    public function status_family(){
+        return $this->belongsTo('App\StatusFamily');
+    }
+
+    public function education(){
+        return $this->belongsTo('App\Education');
+    }
 }

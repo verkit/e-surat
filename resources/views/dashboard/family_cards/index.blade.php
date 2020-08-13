@@ -1,6 +1,5 @@
 @extends('layouts.admin-master')
 @section('menu-7', 'active')
-@section('menu-7-1', 'active')
 @section('title', 'Permohonan Blangko KK')
 
 @push('css-libraries')

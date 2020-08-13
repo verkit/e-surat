@@ -30,8 +30,7 @@ Route::group(['middleware' => ['web', 'auth', 'role:user']], function () {
     Route::post('/ktp', 'Client\RequestLetterController@store_ktp')->name('simpan.ktp');
     Route::delete('/ktp/{id}', 'Client\RequestLetterController@delete_ktp')->name('hapus.ktp');
 
-    Route::get('/kk/baru', 'Client\RequestLetterController@kk_baru')->name('buat.kk.baru');
-    Route::get('/kk/pisah', 'Client\RequestLetterController@kk_pisah')->name('buat.kk.pisah');
+    Route::get('/kk', 'Client\RequestLetterController@kk')->name('buat.kk');
     Route::post('/kk', 'Client\RequestLetterController@store_kk')->name('simpan.kk');
     Route::delete('/kk/{id}', 'Client\RequestLetterController@delete_kk')->name('hapus.kk');
 
@@ -100,7 +99,6 @@ Route::group(['middleware' => ['web', 'auth', 'role:admin']], function () {
 
     //kk
     Route::get('/blangko-kk', 'Admin\FamilyCardController@index')->name('kk');
-    Route::get('/blangko-kk-pisah', 'Admin\FamilyCardController@index_separate')->name('kk.pisah');
     Route::get('/blangko-kk/{id}', 'Admin\FamilyCardController@edit')->name('edit.kk');
     Route::get('/blangko-kk/{id}/cetak', 'Admin\FamilyCardController@print')->name('cetak.kk');
     Route::put('/blangko-kk/{id}', 'Admin\FamilyCardController@update')->name('ubah.kk');

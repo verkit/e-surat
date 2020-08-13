@@ -45,7 +45,7 @@
                                     @endif
                                     name="form_name[]" required>
                                     @if ($item->form_code == "[KETERANGAN]")
-                                    <small>contoh: surat keterangan belum menikah/untuk melamar pekerjaan/dll</small>
+                                    <small>isi keterangan sedetail-detailnya. misal: surat dibuat untuk apa, lokasi dimana, tanggal, dll.</small>
                                     @elseif($item->form_code == "[NAMA]")
                                     <small>Tuliskan nama lengkap</small>
                                     @endif

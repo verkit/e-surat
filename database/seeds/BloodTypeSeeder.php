@@ -13,6 +13,7 @@ class BloodTypeSeeder extends Seeder
     public function run()
     {
         $datas= [
+            '-',
             'A',
             'B',
             'O',

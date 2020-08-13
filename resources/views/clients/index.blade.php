@@ -120,7 +120,7 @@
                     <div class="card-body">
                         <div class="icon"><i class="lni-library"></i></div>
                         <h4>Permohonan KK</h4>
-                        <p>Permohonan pembuatan KK Baru atau Pisah</p>
+                        <p>Permohonan pembuatan KK</p>
                         <a href="{{route('buat.kk')}}" class="btn-sm saasbox-btn mt-3">Ajukan Permohonan</a>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
         <label class="mb-2">No KK</label>
         <input type="text" class="form-control @error('no_kk') is-invalid @enderror" name="no_kk"
             value="{{old('no_kk')}}">
-        <small>Isikan sesuai dengan no KK Lama</small>
+        <small>Isi "-" tanpa tanda kutip apabila membuat kk baru</small>
         @error('no_kk')
         <div class="invalid-feedback">
             {{$message}}

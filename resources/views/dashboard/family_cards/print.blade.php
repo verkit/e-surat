@@ -67,29 +67,29 @@
         </p>
     </header>
     <table>
-        <tr>
-            <td class="judul judul-kk"><b>Nama Kepala Keluarga</b></td>
-            <td>: {{$data->head_of_family}}</td>
-            <td class="judul judul-kk"><b>Desa/Kelurahan</b></td>
-            <td>: {{$data->village}}</td>
+        <tr class="no-border">
+            <td class="judul judul-kk no-border"><b>Nama Kepala Keluarga</b></td>
+            <td class="no-border">: {{$data->head_of_family}}</td>
+            <td class="judul judul-kk no-border"><b>Desa/Kelurahan</b></td>
+            <td class="no-border">: {{$data->village}}</td>
         </tr>
-        <tr>
-            <td class="judul judul-kk"><b>alamat</b></td>
-            <td>: {{$data->address}}</td>
-            <td class="judul judul-kk"><b>Kecamatan</b></td>
-            <td>: {{$data->district}}</td>
+        <tr class="no-border">
+            <td class="judul judul-kk no-border"><b>alamat</b></td>
+            <td class="no-border">: {{$data->address}}</td>
+            <td class="judul judul-kk no-border"><b>Kecamatan</b></td>
+            <td class="no-border">: {{$data->district}}</td>
         </tr>
-        <tr>
-            <td class="judul judul-kk"><b>RT/RW</b></td>
-            <td>: {{$data->rt_rw}}</td>
-            <td class="judul judul-kk"><b>kabupaten/kota</b></td>
-            <td>: {{$data->city}}</td>
+        <tr class="no-border">
+            <td class="judul judul-kk no-border"><b>RT/RW</b></td>
+            <td class="no-border">: {{$data->rt_rw}}</td>
+            <td class="judul judul-kk no-border"><b>kabupaten/kota</b></td>
+            <td class="no-border">: {{$data->city}}</td>
         </tr>
-        <tr>
-            <td class="judul judul-kk"><b>kode pos</b></td>
-            <td>: {{$data->postal_code}}</td>
-            <td class="judul judul-kk"><b>provinsi</b></td>
-            <td>: {{$data->province}}</td>
+        <tr class="no-border">
+            <td class="judul judul-kk no-border"><b>kode pos</b></td>
+            <td class="no-border">: {{$data->postal_code}}</td>
+            <td class="judul judul-kk no-border no-border"><b>provinsi</b></td>
+            <td class="no-border">: {{$data->province}}</td>
         </tr>
     </table>
 

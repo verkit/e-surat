@@ -13,7 +13,7 @@ class FormSeeder extends Seeder
     public function run()
     {
         $forms = [
-            'nama',
+            'nama lengkap',
             'jenis kelamin',
             'tempat lahir',
             'tanggal lahir',

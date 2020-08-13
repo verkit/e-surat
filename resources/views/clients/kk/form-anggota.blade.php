@@ -23,7 +23,8 @@
         </div>
         <div class="form-group my-3">
             <label class="mb-2">Jenis Kelamin*</label>
-            <select class="form-control" name="jenis_kelamin">
+            <select class="form-control @error('jenis_kelamin') is-invalid
+            @enderror" name="jenis_kelamin">
                 <option disabled selected>Pilih</option>
                 @foreach ($genders as $item)
                 <option value="{{$item->id}}">{{$item->name}}</option>
@@ -57,7 +58,8 @@
         </div>
         <div class="form-group my-3">
             <label class="mb-2">Agama*</label>
-            <select class="form-control" name="agama">
+            <select class="form-control @error('agama') is-invalid
+            @enderror" name="agama">
                 <option disabled selected>Pilih</option>
                 @foreach ($religions as $item)
                 <option value="{{$item->id}}">{{$item->name}}</option>
@@ -71,8 +73,13 @@
         </div>
         <div class="form-group my-3">
             <label class="mb-2">Pendidikan*</label>
-            <input type="text" class="form-control @error('pendidikan') is-invalid
-                    @enderror" name="pendidikan" value="{{old('pendidikan')}}">
+            <select class="form-control @error('pendidikan') is-invalid
+            @enderror" name="pendidikan">
+                <option disabled selected>Pilih</option>
+                @foreach ($educations as $item)
+                <option value="{{$item->id}}">{{$item->name}}</option>
+                @endforeach
+            </select>
             @error('pendidikan')
             <div class="invalid-feedback">
                 {{$message}}
@@ -91,7 +98,8 @@
         </div>
         <div class="form-group my-3">
             <label class="mb-2">Golongan Darah*</label>
-            <select class="form-control" name="golongan_darah">
+            <select class="form-control @error('golongan_darah') is-invalid
+            @enderror" name="golongan_darah">
                 <option disabled selected>Pilih</option>
                 @foreach ($blood_types as $item)
                 <option value="{{$item->id}}">{{$item->name}}</option>
@@ -105,7 +113,8 @@
         </div>
         <div class="form-group my-3">
             <label class="mb-2">Status Perkawinan*</label>
-            <select class="form-control" name="status_perkawinan">
+            <select class="form-control @error('status_perkawinan') is-invalid
+            @enderror" name="status_perkawinan">
                 <option disabled selected>Pilih</option>
                 @foreach ($marital_statuses as $item)
                 <option value="{{$item->id}}">{{$item->name}}</option>
@@ -129,8 +138,13 @@
         </div>
         <div class="form-group my-3">
             <label class="mb-2">Status hubungan dalam keluarga*</label>
-            <input type="text" class="form-control @error('status_hubungan') is-invalid
-                    @enderror" name="status_hubungan" value="{{old('status_hubungan')}}">
+            <select class="form-control @error('status_hubungan') is-invalid
+            @enderror" name="status_hubungan">
+                <option disabled selected>Pilih</option>
+                @foreach ($status_family as $item)
+                <option value="{{$item->id}}">{{$item->name}}</option>
+                @endforeach
+            </select>
             @error('status_hubungan')
             <div class="invalid-feedback">
                 {{$message}}
@@ -139,7 +153,8 @@
         </div>
         <div class="form-group my-3">
             <label class="mb-2">Kewarganegaraan*</label>
-            <select class="form-control" name="kewarganegaraan">
+            <select class="form-control @error('kewarganegaraan') is-invalid
+            @enderror" name="kewarganegaraan">
                 <option disabled selected>Pilih</option>
                 @foreach ($citizenships as $item)
                 <option value="{{$item->id}}">{{$item->name}}</option>
