@@ -251,6 +251,7 @@
                                     </label>
                                     <input type="file" class="form-control @error('ktp') is-invalid
                                             @enderror" name="ktp" accept=".jpg,.jpeg,.png,.pdf">
+                                    <small>Format file : jpg/jpeg/png/pdf. maksimal ukuran file 2mb</small>
                                     @if ($user->villager->ktp)
                                     <small>Silahkan upload KTP, apabila ingin memperbaruinya</small>
                                     @else
@@ -271,6 +272,7 @@
                                     </label>
                                     <input type="file" class="form-control @error('kk') is-invalid
                                         @enderror" name="kk" accept=".jpg,.jpeg,.png,.pdf">
+                                    <small>Format file : jpg/jpeg/png/pdf. maksimal ukuran file 2mb</small>
                                     @if ($user->villager->kk)
                                     <small>Silahkan upload KK, apabila ingin memperbaruinya</small>
                                     @endif
