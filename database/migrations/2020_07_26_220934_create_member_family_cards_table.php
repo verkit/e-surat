@@ -22,12 +22,12 @@ class CreateMemberFamilyCardsTable extends Migration
             $table->string('birthplace')->nullable();
             $table->date('birthdate')->nullable();
             $table->unsignedBigInteger('religion_id')->nullable();
-            $table->string('education')->nullable();
+            $table->unsignedBigInteger('education_id')->nullable();
             $table->string('profession')->nullable();
             $table->unsignedBigInteger('blood_type_id')->nullable();
             $table->unsignedBigInteger('marital_status_id')->nullable();
             $table->date('marriage_date')->nullable();
-            $table->string('status_in_family')->nullable();
+            $table->unsignedBigInteger('status_in_family_id')->nullable();
             $table->unsignedBigInteger('citizenship_id')->nullable();
             $table->string('passport')->nullable();
             $table->string('kitap')->nullable();
@@ -41,6 +41,8 @@ class CreateMemberFamilyCardsTable extends Migration
             $table->foreign('citizenship_id')->references('id')->on('citizenships')->onDelete('cascade');
             $table->foreign('blood_type_id')->references('id')->on('blood_types')->onDelete('cascade');
             $table->foreign('religion_id')->references('id')->on('religions')->onDelete('cascade');
+            $table->foreign('education_id')->references('id')->on('educations')->onDelete('cascade');
+            $table->foreign('status_in_family_id')->references('id')->on('status_families')->onDelete('cascade');
         });
     }
 

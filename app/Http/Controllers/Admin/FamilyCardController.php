@@ -15,7 +15,6 @@ class FamilyCardController extends Controller
     {
         $request = FamilyCard::join('users', 'family_cards.user_id', '=', 'users.id')
             ->select('family_cards.*', 'users.name')
-            ->where('family_cards.is_new', 1)
             ->orderBy('family_cards.created_at', 'desc')
             ->get();
 
@@ -46,40 +45,40 @@ class FamilyCardController extends Controller
         return view('dashboard.family_cards.index');
     }
 
-    public function index_separate()
-    {
-        $request = FamilyCard::join('users', 'family_cards.user_id', '=', 'users.id')
-            ->select('family_cards.*', 'users.name')
-            ->where('family_cards.is_separate', 1)
-            ->orderBy('family_cards.created_at', 'desc')
-            ->get();
+    // public function index_separate()
+    // {
+    //     $request = FamilyCard::join('users', 'family_cards.user_id', '=', 'users.id')
+    //         ->select('family_cards.*', 'users.name')
+    //         ->where('family_cards.is_separate', 1)
+    //         ->orderBy('family_cards.created_at', 'desc')
+    //         ->get();
 
-        if (request()->ajax()) {
-            return datatables()->of($request)
-                ->addColumn('checkbox', function ($data) {
-                    return '<div class="custom-checkbox custom-control">
-                        <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input data-checkbox" id="delete' . $data->id . '"name="delete[]" value="' . $data->id . '" data-id="' . $data->id . '">
-                        <label for="delete' . $data->id . '" class="custom-control-label">&nbsp;</label>
-                    </div>';
-                })
-                ->addColumn('date', function ($data) {
-                    return $data->created_at->format('Y M d, H:i');
-                })
-                ->addColumn('action', function ($data) {
-                    return '<a name="detail" target="_blank" href="/blangko-kk/' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
-                })
-                ->addColumn('name', function ($data) {
-                    if ($data->is_done == 0) {
-                        return '<b>' . $data->head_of_family . '</b>';
-                    } else {
-                        return $data->head_of_family;
-                    }
-                })
-                ->rawColumns(['checkbox', 'action', 'date', 'name'])
-                ->make(true);
-        }
-        return view('dashboard.family_cards.separate');
-    }
+    //     if (request()->ajax()) {
+    //         return datatables()->of($request)
+    //             ->addColumn('checkbox', function ($data) {
+    //                 return '<div class="custom-checkbox custom-control">
+    //                     <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input data-checkbox" id="delete' . $data->id . '"name="delete[]" value="' . $data->id . '" data-id="' . $data->id . '">
+    //                     <label for="delete' . $data->id . '" class="custom-control-label">&nbsp;</label>
+    //                 </div>';
+    //             })
+    //             ->addColumn('date', function ($data) {
+    //                 return $data->created_at->format('Y M d, H:i');
+    //             })
+    //             ->addColumn('action', function ($data) {
+    //                 return '<a name="detail" target="_blank" href="/blangko-kk/' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>';
+    //             })
+    //             ->addColumn('name', function ($data) {
+    //                 if ($data->is_done == 0) {
+    //                     return '<b>' . $data->head_of_family . '</b>';
+    //                 } else {
+    //                     return $data->head_of_family;
+    //                 }
+    //             })
+    //             ->rawColumns(['checkbox', 'action', 'date', 'name'])
+    //             ->make(true);
+    //     }
+    //     return view('dashboard.family_cards.separate');
+    // }
 
     public function edit($id)
     {

@@ -72,11 +72,7 @@
                         data-wow-duration="1000ms"
                         onclick="window.open('{{route('surat.saya.kk', $item->id)}}', '_blank');">
                         <div class="card-body"><i class="lni-library"></i>
-                            @if ($item->is_new == 1)
-                            <h5>Permohonan Baru</h5>
-                            @else
-                            <h5>Permohonan Pisah</h5>
-                            @endif
+                            <h5>Permohonan KK</h5>
                             <p>{{$item->number}}</p>
                             <small>{{$item->created_at->isoFormat('d MMMM Y')}}</small>
                         </div>

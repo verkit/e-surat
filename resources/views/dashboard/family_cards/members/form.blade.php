@@ -30,7 +30,8 @@
                     </div>
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Jenis Kelamin</label>
-                        <select class="form-control" name="gender">
+                        <select class="form-control @error('gender') is-invalid
+            @enderror" name="gender">
                             @foreach ($genders as $item)
                             <option value="{{$item->id}}" @if ($item->id == $data->gender_id)
                                 selected
@@ -69,7 +70,8 @@
                 <div class="row">
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Agama</label>
-                        <select class="form-control" name="religion">
+                        <select class="form-control @error('religion') is-invalid
+            @enderror" name="religion">
                             @foreach ($religions as $item)
                             <option value="{{$item->id}}" @if ($item->id == $data->religion_id)
                                 selected
@@ -84,8 +86,14 @@
                     </div>
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Pendidikan</label>
-                        <input type="text" class="form-control @error('education') is-invalid
-                            @enderror" name="education" value="{{$data->education}}">
+                        <select class="form-control @error('education') is-invalid
+            @enderror" name="education">
+                            @foreach ($educations as $item)
+                            <option value="{{$item->id}}" @if ($item->id == $data->education_id)
+                                selected
+                                @endif>{{$item->name}}</option>
+                            @endforeach
+                        </select>
                         @error('education')
                         <div class="invalid-feedback">
                             {{$message}}
@@ -106,7 +114,8 @@
                     </div>
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Golongan Darah</label>
-                        <select class="form-control" name="blood_type">
+                        <select class="form-control @error('blood_type') is-invalid
+            @enderror" name="blood_type">
                             @foreach ($blood_types as $item)
                             <option value="{{$item->id}}" @if ($item->id == $data->blood_type_id)
                                 selected
@@ -123,7 +132,8 @@
                 <div class="row">
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Status Perkawinan</label>
-                        <select class="form-control" name="marital_status">
+                        <select class="form-control @error('marital_status') is-invalid
+            @enderror" name="marital_status">
                             @foreach ($marital_statuses as $item)
                             <option value="{{$item->id}}" @if ($item->id == $data->marital_status_id)
                                 selected
@@ -150,8 +160,14 @@
                 <div class="row">
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Status hubungan dalam keluarga</label>
-                        <input type="text" class="form-control @error('status_in_family') is-invalid
-                            @enderror" name="status_in_family" value="{{$data->status_in_family}}">
+                        <select class="form-control @error('status_in_family') is-invalid
+            @enderror" name="status_in_family">
+                            @foreach ($status_family as $item)
+                            <option value="{{$item->id}}" @if ($item->id == $data->status_in_family_id)
+                                selected
+                                @endif>{{$item->name}}</option>
+                            @endforeach
+                        </select>
                         @error('status_in_family')
                         <div class="invalid-feedback">
                             {{$message}}
@@ -160,7 +176,8 @@
                     </div>
                     <div class="form-group col-lg-6 col-md-6">
                         <label>Kewarganegaraan</label>
-                        <select class="form-control" name="citizenship">
+                        <select class="form-control @error('citizenship') is-invalid
+            @enderror" name="citizenship">
                             @foreach ($citizenships as $item)
                             <option value="{{$item->id}}" @if ($item->id == $data->citizenship_id)
                                 selected

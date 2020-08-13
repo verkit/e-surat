@@ -190,7 +190,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-3 col-12">
-                                        <label>Profesi</label>
+                                        <label>Pekerjaan</label>
                                         <input type="text" class="form-control @error('profession') is-invalid
                                         @enderror" name="profession" value="{{$user->villager->profession}}" required>
                                         @error('profession')

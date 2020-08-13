@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\BloodType;
 use App\Citizenship;
+use App\Education;
 use App\Gender;
 use App\Http\Controllers\Controller;
 use App\MaritalStatus;
 use App\MemberFamilyCard;
 use App\Religion;
+use App\StatusFamily;
 use Illuminate\Http\Request;
 
 class MemberFamilyController extends Controller
@@ -21,7 +23,9 @@ class MemberFamilyController extends Controller
         $blood_types = BloodType::all();
         $religions = Religion::all();
         $citizenships = Citizenship::all();
-        return view('dashboard.family_cards.members.edit', compact('data', 'marital_statuses', 'genders', 'blood_types', 'religions', 'citizenships'));
+        $educations = Education::all();
+        $status_family = StatusFamily::all();
+        return view('dashboard.family_cards.members.edit', compact('data', 'marital_statuses', 'genders', 'blood_types', 'religions', 'citizenships', 'educations', 'status_family'));
     }
 
     public function update(Request $request, $id)
@@ -37,7 +41,7 @@ class MemberFamilyController extends Controller
             'profession' => 'string|max:255',
             'blood_type' => 'string|max:255',
             'marital_status' => 'string|max:255',
-            'marriage_date' => 'string|max:255',
+            'marriage_date' => 'nullable|string|max:255',
             'status_in_family' => 'string|max:255',
             'citizenship' => 'string|max:255',
             'passport' => 'nullable|string|max:255',
@@ -53,12 +57,12 @@ class MemberFamilyController extends Controller
             'birthplace' => $request->birthplace,
             'birthdate' => $request->birthdate,
             'religion_id' => $request->religion,
-            'education' => $request->education,
+            'education_id' => $request->education,
             'profession' => $request->profession,
             'blood_type_id' => $request->blood_type,
             'marital_status_id' => $request->marital_status,
             'marriage_date' => $request->marriage_date,
-            'status_in_family' => $request->status_in_family,
+            'status_in_family_id' => $request->status_in_family,
             'citizenship_id' => $request->citizenship,
             'passport' => $request->passport,
             'kitap' => $request->kitap,

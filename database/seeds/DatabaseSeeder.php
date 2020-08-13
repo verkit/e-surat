@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
             CitizenshipSeeder::class,
             ReligionSeeder::class,
             LetterSeeder::class,
-            TestSeeder::class,
+            // TestSeeder::class,
+            EduSeeder::class,
+            StatusFamilySeeder::class,
         ]);
     }
 }
